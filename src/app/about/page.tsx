@@ -1,73 +1,89 @@
 'use client'
 
-import { Box, Container, Heading, Text, SimpleGrid, Image, VStack, Flex, Icon } from '@chakra-ui/react'
-import { FaGraduationCap, FaHandshake, FaGlobeAsia, FaUsers } from 'react-icons/fa'
+import { Box, Container, Heading, Text, SimpleGrid, Image, VStack } from '@chakra-ui/react'
+
+interface TeamMember {
+    name: string;
+    role: string;
+    bio: string;
+    image: string;
+}
 
 export default function About() {
     return (
         <Box py={20}>
             <Container maxW="container.xl">
                 {/* Mission Section */}
-                <VStack gap={8} align="center" mb={20}>
-                    <Heading size="2xl" textAlign="center">Our Mission</Heading>
-                    <Text fontSize="xl" color="gray.600" textAlign="center" maxW="container.md">
-                        At ChinaStudyHub, we're dedicated to making Chinese education accessible to international students.
-                        Based in Beijing, our team of education professionals leverages deep local expertise and university
-                        connections to help students secure admissions and maximize their scholarship opportunities.
-                    </Text>
+                <VStack spacing={12} mb={20}>
+                    <VStack spacing={6}>
+                        <Heading size="2xl" textAlign="center">Our Mission</Heading>
+                        <Text fontSize="xl" color="gray.600" textAlign="center" maxW="container.md">
+                            We&apos;re dedicated to making Chinese education accessible to international students.
+                            Based in Beijing, our team of education professionals leverages deep local expertise and university
+                            connections to help students secure admissions and maximize their scholarship opportunities.
+                        </Text>
+                    </VStack>
                 </VStack>
 
                 {/* Why Choose Us Section */}
-                <Box mb={20}>
-                    <Heading size="xl" textAlign="center" mb={12}>Why Choose ChinaStudyHub</Heading>
-                    <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap={10}>
+                <VStack spacing={12} mb={20}>
+                    <VStack spacing={6}>
+                        <Heading size="2xl" textAlign="center">Why Choose Us</Heading>
+                        <Text fontSize="xl" color="gray.600" textAlign="center" maxW="container.md">
+                            We combine local expertise with international standards to provide the best support for your educational journey in China.
+                        </Text>
+                    </VStack>
+
+                    <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={10}>
                         <FeatureCard
-                            icon={FaGraduationCap}
                             title="Expert Guidance"
-                            description="Our team consists of experienced education professionals with deep knowledge of Chinese universities and their requirements."
+                            description="Our team consists of education professionals with years of experience in Chinese universities."
                         />
                         <FeatureCard
-                            icon={FaHandshake}
                             title="Strong Connections"
-                            description="Direct relationships with top Chinese universities and scholarship programs to maximize your opportunities."
+                            description="Direct partnerships with top Chinese universities and scholarship programs."
                         />
                         <FeatureCard
-                            icon={FaGlobeAsia}
                             title="Local Expertise"
-                            description="Based in Beijing, we provide authentic insights and support for both academic and cultural adaptation."
+                            description="Deep understanding of Chinese education system and cultural nuances."
                         />
                         <FeatureCard
-                            icon={FaUsers}
                             title="Personalized Support"
-                            description="Tailored guidance throughout your journey, from application to arrival and beyond."
+                            description="Tailored guidance based on your academic background and career goals."
                         />
                     </SimpleGrid>
-                </Box>
+                </VStack>
 
                 {/* Team Section */}
-                <Box>
-                    <Heading size="xl" textAlign="center" mb={12}>Our Team</Heading>
-                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={10}>
-                        <TeamMember
-                            name="Dr. Wei Chen"
-                            position="Founder & Education Director"
-                            image="/placeholder.jpg"
-                            description="Former university admissions officer with 15+ years of experience in international education."
+                <VStack spacing={12}>
+                    <VStack spacing={6}>
+                        <Heading size="2xl" textAlign="center">Our Team</Heading>
+                        <Text fontSize="xl" color="gray.600" textAlign="center" maxW="container.md">
+                            Meet the experts who will guide you through your journey to studying in China.
+                        </Text>
+                    </VStack>
+
+                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
+                        <TeamMemberCard
+                            name="Dr. Wei Zhang"
+                            role="Founder & Education Director"
+                            bio="Former university professor with 15+ years of experience in international education."
+                            image="/team1.jpg"
                         />
-                        <TeamMember
-                            name="Li Ming"
-                            position="Scholarship Specialist"
-                            image="/placeholder.jpg"
-                            description="Expert in Chinese government and university scholarship programs with a track record of successful applications."
+                        <TeamMemberCard
+                            name="Li Wei"
+                            role="Scholarship Specialist"
+                            bio="Expert in Chinese government scholarships and university funding opportunities."
+                            image="/team2.jpg"
                         />
-                        <TeamMember
-                            name="Sarah Wang"
-                            position="Student Support Coordinator"
-                            image="/placeholder.jpg"
-                            description="Bilingual professional specializing in student visa applications and pre-arrival preparation."
+                        <TeamMemberCard
+                            name="Sarah Chen"
+                            role="Student Support Coordinator"
+                            bio="Dedicated to ensuring smooth transitions for international students in China."
+                            image="/team3.jpg"
                         />
                     </SimpleGrid>
-                </Box>
+                </VStack>
 
                 {/* Success Stats */}
                 <Box mt={20} bg="blue.50" py={16} borderRadius="xl">
@@ -82,53 +98,44 @@ export default function About() {
     )
 }
 
-function FeatureCard({ icon, title, description }: { icon: any; title: string; description: string }) {
+function FeatureCard({ title, description }: { title: string; description: string }) {
     return (
-        <VStack align="start" gap={4}>
-            <Flex
-                w={12}
-                h={12}
-                align="center"
-                justify="center"
-                color="white"
-                rounded="full"
-                bg="blue.500"
-            >
-                <Icon as={icon} w={6} h={6} />
-            </Flex>
-            <Heading size="md">{title}</Heading>
+        <VStack
+            p={6}
+            bg="white"
+            borderRadius="lg"
+            boxShadow="md"
+            align="start"
+            spacing={4}
+        >
+            <Heading size="md" color="#544695">{title}</Heading>
             <Text color="gray.600">{description}</Text>
         </VStack>
     )
 }
 
-function TeamMember({ name, position, image, description }: {
-    name: string;
-    position: string;
-    image: string;
-    description: string;
-}) {
+function TeamMemberCard({ name, role, bio, image }: TeamMember) {
     return (
-        <VStack gap={4}>
-            <Box
-                w="200px"
-                h="200px"
+        <VStack
+            p={6}
+            bg="white"
+            borderRadius="lg"
+            boxShadow="md"
+            align="center"
+            spacing={4}
+        >
+            <Image
+                src={image}
+                alt={name}
+                w="100px"
+                h="100px"
                 borderRadius="full"
-                overflow="hidden"
-                bg="gray.200"
-            >
-                <Image
-                    src={image}
-                    alt={name}
-                    w="100%"
-                    h="100%"
-                    objectFit="cover"
-                />
-            </Box>
-            <VStack gap={2}>
-                <Heading size="md">{name}</Heading>
-                <Text color="blue.500" fontWeight="bold">{position}</Text>
-                <Text color="gray.600" textAlign="center">{description}</Text>
+                objectFit="cover"
+            />
+            <VStack spacing={2} align="center">
+                <Heading size="md" color="#544695">{name}</Heading>
+                <Text color="gray.500" fontWeight="medium">{role}</Text>
+                <Text color="gray.600" textAlign="center">{bio}</Text>
             </VStack>
         </VStack>
     )

@@ -3,6 +3,45 @@
 import { Box, Container, Heading, Text, SimpleGrid, VStack, Icon, Flex } from '@chakra-ui/react'
 import { FaGraduationCap, FaMoneyBillWave, FaUniversity, FaLanguage, FaHandshake, FaUserFriends } from 'react-icons/fa'
 
+interface Service {
+    title: string;
+    description: string;
+    icon: React.ElementType;
+}
+
+const services: Service[] = [
+    {
+        title: "University Application Support",
+        description: "Expert guidance through the entire application process, from selecting the right university to submitting a compelling application package.",
+        icon: FaGraduationCap
+    },
+    {
+        title: "Scholarship & Financial Aid",
+        description: "Access to exclusive scholarship opportunities and assistance in securing financial aid, including Chinese government scholarships and university-specific grants.",
+        icon: FaMoneyBillWave
+    },
+    {
+        title: "University Selection",
+        description: "Personalized recommendations for universities based on your academic background, career goals, and budget considerations.",
+        icon: FaUniversity
+    },
+    {
+        title: "Language Preparation",
+        description: "Support for Chinese language learning and HSK exam preparation, including recommendations for language schools and study materials.",
+        icon: FaLanguage
+    },
+    {
+        title: "Visa Application Support",
+        description: "Step-by-step guidance through the Chinese student visa application process, including document preparation and interview coaching.",
+        icon: FaHandshake
+    },
+    {
+        title: "Pre-arrival & Settlement",
+        description: "Comprehensive support for your transition to China, including accommodation arrangements, local orientation, and cultural adaptation guidance.",
+        icon: FaUserFriends
+    }
+]
+
 export default function Services() {
     return (
         <Box py={20}>
@@ -15,43 +54,21 @@ export default function Services() {
                 </VStack>
 
                 <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap={10}>
-                    <ServiceCard
-                        icon={FaGraduationCap}
-                        title="University Application Support"
-                        description="Expert guidance through the entire application process, from selecting the right university to submitting a compelling application package."
-                    />
-                    <ServiceCard
-                        icon={FaMoneyBillWave}
-                        title="Scholarship & Financial Aid"
-                        description="Access to exclusive scholarship opportunities and assistance in securing financial aid, including Chinese government scholarships and university-specific grants."
-                    />
-                    <ServiceCard
-                        icon={FaUniversity}
-                        title="University Selection"
-                        description="Personalized recommendations for universities based on your academic background, career goals, and budget considerations."
-                    />
-                    <ServiceCard
-                        icon={FaLanguage}
-                        title="Language Preparation"
-                        description="Support for Chinese language learning and HSK exam preparation, including recommendations for language schools and study materials."
-                    />
-                    <ServiceCard
-                        icon={FaHandshake}
-                        title="Visa Application Support"
-                        description="Step-by-step guidance through the Chinese student visa application process, including document preparation and interview coaching."
-                    />
-                    <ServiceCard
-                        icon={FaUserFriends}
-                        title="Pre-arrival & Settlement"
-                        description="Comprehensive support for your transition to China, including accommodation arrangements, local orientation, and cultural adaptation guidance."
-                    />
+                    {services.map((service: Service, index: number) => (
+                        <ServiceCard
+                            key={index}
+                            icon={service.icon}
+                            title={service.title}
+                            description={service.description}
+                        />
+                    ))}
                 </SimpleGrid>
             </Container>
         </Box>
     )
 }
 
-function ServiceCard({ icon, title, description }: { icon: any; title: string; description: string }) {
+function ServiceCard({ icon, title, description }: { icon: React.ElementType; title: string; description: string }) {
     return (
         <Box
             p={8}

@@ -11,8 +11,8 @@ export default function Contact() {
                     {/* Contact Information */}
                     <VStack align="start" gap={6}>
                         <Heading size="xl">Get in Touch</Heading>
-                        <Text fontSize="lg" color="gray.600">
-                            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                        <Text fontSize="lg" color="gray.600" textAlign="center" maxW="container.md">
+                            We&apos;re here to help you with any questions about studying in China. Let&apos;s get in touch!
                         </Text>
 
                         <Box>

@@ -1,13 +1,57 @@
 'use client'
 
-import { Box, Button, Container, Flex, Heading, Text, VStack, SimpleGrid, Avatar, Icon, useColorModeValue } from '@chakra-ui/react'
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  Button,
+  VStack,
+  SimpleGrid,
+  Icon,
+  Flex,
+  Avatar
+} from '@chakra-ui/react'
 import { FaGraduationCap, FaUniversity, FaLanguage, FaHandshake } from 'react-icons/fa'
-import NextLink from 'next/link'
+import Link from 'next/link'
+
+interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  image: string;
+  university: string;
+  program: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: "Sarah Johnson",
+    role: "Student",
+    content: "ChinaStudyHub made my dream of studying at Tsinghua a reality. Their guidance through the application process was invaluable.",
+    image: "/testimonial1.jpg",
+    university: "Tsinghua University",
+    program: "Master's in International Relations"
+  },
+  {
+    name: "Michael Chen",
+    role: "Student",
+    content: "The scholarship application support was exceptional. I received a full scholarship thanks to their expertise.",
+    image: "/testimonial2.jpg",
+    university: "Fudan University",
+    program: "Bachelor's in Business Administration"
+  },
+  {
+    name: "Emma Wilson",
+    role: "Student",
+    content: "From visa application to finding accommodation, they supported me every step of the way.",
+    image: "/testimonial3.jpg",
+    university: "Peking University",
+    program: "Chinese Language Program"
+  }
+]
 
 export default function Home() {
-  const bgColor = useColorModeValue('white', 'gray.800')
-  const cardBg = useColorModeValue('white', 'gray.700')
-
   return (
     <Box>
       {/* Hero Section */}
@@ -22,10 +66,10 @@ export default function Home() {
                 Comprehensive support for international students applying to Chinese universities. From application assistance to visa support, we guide you every step of the way.
               </Text>
               <Flex gap={4}>
-                <Button as={NextLink} href="/services" colorScheme="purple" size="lg" bg="#544695" _hover={{ bg: "#FDB801" }}>
+                <Button as={Link} href="/services" colorScheme="purple" size="lg" bg="#544695" _hover={{ bg: "#FDB801" }}>
                   Our Services
                 </Button>
-                <Button as={NextLink} href="/contact" variant="outline" size="lg" borderColor="#544695" color="#544695" _hover={{ bg: "#544695", color: "white" }}>
+                <Button as={Link} href="/contact" variant="outline" size="lg" borderColor="#544695" color="#544695" _hover={{ bg: "#544695", color: "white" }}>
                   Contact Us
                 </Button>
               </Flex>
@@ -98,27 +142,16 @@ export default function Home() {
               </Text>
             </Box>
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} w="full">
-              <TestimonialCard
-                name="Sarah Johnson"
-                university="Tsinghua University"
-                program="Master's in International Relations"
-                image="/testimonial1.jpg"
-                quote="ChinaStudyHub made my dream of studying at Tsinghua a reality. Their guidance through the application process was invaluable."
-              />
-              <TestimonialCard
-                name="Michael Chen"
-                university="Fudan University"
-                program="Bachelor's in Business Administration"
-                image="/testimonial2.jpg"
-                quote="The scholarship application support was exceptional. I received a full scholarship thanks to their expertise."
-              />
-              <TestimonialCard
-                name="Emma Wilson"
-                university="Peking University"
-                program="Chinese Language Program"
-                image="/testimonial3.jpg"
-                quote="From visa application to finding accommodation, they supported me every step of the way."
-              />
+              {testimonials.map((testimonial: Testimonial, index: number) => (
+                <TestimonialCard
+                  key={index}
+                  name={testimonial.name}
+                  university={testimonial.university}
+                  program={testimonial.program}
+                  image={testimonial.image}
+                  quote={testimonial.content}
+                />
+              ))}
             </SimpleGrid>
           </VStack>
         </Container>
@@ -135,7 +168,7 @@ export default function Home() {
               Join hundreds of successful students who have achieved their dreams of studying in China with our support.
             </Text>
             <Button
-              as={NextLink}
+              as={Link}
               href="/contact"
               size="lg"
               bg="#FDB801"
@@ -150,7 +183,7 @@ export default function Home() {
   )
 }
 
-function FeatureCard({ icon, title, description }: { icon: any; title: string; description: string }) {
+function FeatureCard({ icon, title, description }: { icon: React.ElementType; title: string; description: string }) {
   return (
     <VStack
       p={8}
@@ -170,28 +203,37 @@ function FeatureCard({ icon, title, description }: { icon: any; title: string; d
   )
 }
 
-function TestimonialCard({ name, university, program, image, quote }: { name: string; university: string; program: string; image: string; quote: string }) {
+interface TestimonialCardProps {
+  name: string;
+  university: string;
+  program: string;
+  image: string;
+  quote: string;
+}
+
+function TestimonialCard({ name, university, program, image, quote }: TestimonialCardProps) {
   return (
-    <Box
-      p={8}
+    <VStack
+      p={6}
       bg="white"
-      borderRadius="xl"
+      borderRadius="lg"
       boxShadow="md"
-      _hover={{ transform: 'translateY(-5px)', transition: 'all 0.3s ease' }}
+      align="start"
+      spacing={4}
     >
       <VStack align="start" spacing={4}>
         <Text color="gray.600" fontSize="lg" fontStyle="italic">
-          "{quote}"
+          &quot;{quote}&quot;
         </Text>
         <Flex align="center" gap={4}>
-          <Avatar name={name} src={image} />
-          <Box>
+          <Avatar src={image} name={name} />
+          <VStack align="start" spacing={0}>
             <Text fontWeight="bold" color="#544695">{name}</Text>
-            <Text fontSize="sm" color="gray.600">{university}</Text>
-            <Text fontSize="sm" color="gray.600">{program}</Text>
-          </Box>
+            <Text color="gray.500">{university}</Text>
+            <Text color="gray.500" fontSize="sm">{program}</Text>
+          </VStack>
         </Flex>
       </VStack>
-    </Box>
+    </VStack>
   )
 }

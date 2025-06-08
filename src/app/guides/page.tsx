@@ -11,7 +11,6 @@ import {
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
-    Image,
 } from '@chakra-ui/react'
 
 export default function Guides() {
@@ -49,7 +48,7 @@ export default function Guides() {
                                 <Text>
                                     Gather certified transcripts, passport scans, a one–page study plan, proof of language
                                     ability (HSK 4‒5 or IELTS/TOEFL), and two recommendation letters. Upload them to the
-                                    school's own portal or the national "Study in China" platform, then pay the application
+                                    school&apos;s own portal or the national &quot;Study in China&quot; platform, then pay the application
                                     fee − typically ¥400 – ¥800. Expect an admissions decision within 4‒6 weeks.
                                 </Text>
                                 <Text>
@@ -100,7 +99,7 @@ export default function Guides() {
                         <h2>
                             <AccordionButton py={4} _hover={{ bg: 'gray.50' }}>
                                 <Box flex="1" textAlign="left" fontWeight="bold" color="#544695">
-                                    First Arrival in China: Dos & Don'ts
+                                    First Arrival in China: Dos & Don&apos;ts
                                 </Box>
                                 <AccordionIcon />
                             </AccordionButton>
@@ -108,9 +107,9 @@ export default function Guides() {
                         <AccordionPanel pb={4}>
                             <VStack align="start" gap={4}>
                                 <Text>
-                                    Cruise through immigration, grab your bags, and choose the green channel unless you're
+                                    Cruise through immigration, grab your bags, and choose the green channel unless you&apos;re
                                     declaring items like large electronics for resale or more than USD 5 000 in cash. Since
-                                    November 2023 there's no health-code QR, but officers may still ask about symptoms – answer
+                                    November 2023 there&apos;s no health-code QR, but officers may still ask about symptoms – answer
                                     truthfully.
                                 </Text>
                                 <Text>
@@ -142,7 +141,7 @@ export default function Guides() {
                             <VStack align="start" gap={4}>
                                 <Text>
                                     Download WeChat, hit <em>Sign Up</em>, and register with any mobile number (foreign numbers
-                  are fine). After SMS verification, ask a friend who's had WeChat > 6 months to scan the
+                                    are fine). After SMS verification, ask a friend who&apos;s had WeChat &gt; 6 months to scan the
                                     security QR. No friend handy? Wait 24 h and try again—Tencent limits assists per user per
                                     day.
                                 </Text>
@@ -180,13 +179,13 @@ export default function Guides() {
                                     the police registration slip, and a local phone number.
                                 </Text>
                                 <Text>
-                                    You'll fill out a short form, choose a six-digit PIN, and, under 2025 KYC rules, provide
+                                    You&apos;ll fill out a short form, choose a six-digit PIN, and, under 2025 KYC rules, provide
                                     fingerprints or a quick face scan. Some branches ask for an initial deposit of ¥10 – ¥500;
                                     many campus branches waive it.
                                 </Text>
                                 <Text>
                                     Before leaving the counter, activate online banking and bind the UnionPay debit card inside
-                                    WeChat Pay. This lifts the app's spending cap to ¥200 000/year—enough for tuition and rent.
+                                    WeChat Pay. This lifts the app&apos;s spending cap to ¥200 000/year—enough for tuition and rent.
                                     You can also enable the e-CNY digital-yuan wallet, which works even without mobile data.
                                     Remember: closing the account requires the original passport and card, and dormant cards
                                     incur maintenance fees after 12 months.
