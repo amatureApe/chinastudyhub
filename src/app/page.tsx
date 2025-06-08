@@ -1,103 +1,197 @@
-import Image from "next/image";
+'use client'
+
+import { Box, Button, Container, Flex, Heading, Text, VStack, SimpleGrid, Avatar, Icon, useColorModeValue } from '@chakra-ui/react'
+import { FaGraduationCap, FaUniversity, FaLanguage, FaHandshake } from 'react-icons/fa'
+import NextLink from 'next/link'
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const bgColor = useColorModeValue('white', 'gray.800')
+  const cardBg = useColorModeValue('white', 'gray.700')
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+  return (
+    <Box>
+      {/* Hero Section */}
+      <Box bg="white" py={20}>
+        <Container maxW="container.xl">
+          <Flex direction={{ base: 'column', md: 'row' }} align="center" gap={8}>
+            <Box flex={1}>
+              <Heading as="h1" size="2xl" mb={6} color="#544695">
+                Your Gateway to Chinese Education
+              </Heading>
+              <Text fontSize="xl" mb={8} color="gray.600">
+                Comprehensive support for international students applying to Chinese universities. From application assistance to visa support, we guide you every step of the way.
+              </Text>
+              <Flex gap={4}>
+                <Button as={NextLink} href="/services" colorScheme="purple" size="lg" bg="#544695" _hover={{ bg: "#FDB801" }}>
+                  Our Services
+                </Button>
+                <Button as={NextLink} href="/contact" variant="outline" size="lg" borderColor="#544695" color="#544695" _hover={{ bg: "#544695", color: "white" }}>
+                  Contact Us
+                </Button>
+              </Flex>
+            </Box>
+            <Box flex={1} display={{ base: 'none', md: 'block' }}>
+              <Box
+                bg="#78C3BE"
+                w="full"
+                h="400px"
+                borderRadius="xl"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Icon as={FaGraduationCap} w={32} h={32} color="white" />
+              </Box>
+            </Box>
+          </Flex>
+        </Container>
+      </Box>
+
+      {/* Features Section */}
+      <Box py={20} bg="gray.50">
+        <Container maxW="container.xl">
+          <VStack spacing={12}>
+            <Box textAlign="center">
+              <Heading as="h2" size="xl" mb={4} color="#544695">
+                Why Choose ChinaStudyHub?
+              </Heading>
+              <Text fontSize="lg" color="gray.600">
+                We provide comprehensive support throughout your journey to studying in China
+              </Text>
+            </Box>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} w="full">
+              <FeatureCard
+                icon={FaUniversity}
+                title="University Selection"
+                description="Expert guidance in choosing the right university and program for your goals"
+              />
+              <FeatureCard
+                icon={FaGraduationCap}
+                title="Application Support"
+                description="Complete assistance with university applications and documentation"
+              />
+              <FeatureCard
+                icon={FaLanguage}
+                title="Language Preparation"
+                description="Support for Chinese language learning and HSK exam preparation"
+              />
+              <FeatureCard
+                icon={FaHandshake}
+                title="Visa Assistance"
+                description="Step-by-step guidance through the Chinese student visa process"
+              />
+            </SimpleGrid>
+          </VStack>
+        </Container>
+      </Box>
+
+      {/* Testimonials Section */}
+      <Box py={20} bg="white">
+        <Container maxW="container.xl">
+          <VStack spacing={12}>
+            <Box textAlign="center">
+              <Heading as="h2" size="xl" mb={4} color="#544695">
+                Student Success Stories
+              </Heading>
+              <Text fontSize="lg" color="gray.600">
+                Hear from our students who have successfully started their journey in China
+              </Text>
+            </Box>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} w="full">
+              <TestimonialCard
+                name="Sarah Johnson"
+                university="Tsinghua University"
+                program="Master's in International Relations"
+                image="/testimonial1.jpg"
+                quote="ChinaStudyHub made my dream of studying at Tsinghua a reality. Their guidance through the application process was invaluable."
+              />
+              <TestimonialCard
+                name="Michael Chen"
+                university="Fudan University"
+                program="Bachelor's in Business Administration"
+                image="/testimonial2.jpg"
+                quote="The scholarship application support was exceptional. I received a full scholarship thanks to their expertise."
+              />
+              <TestimonialCard
+                name="Emma Wilson"
+                university="Peking University"
+                program="Chinese Language Program"
+                image="/testimonial3.jpg"
+                quote="From visa application to finding accommodation, they supported me every step of the way."
+              />
+            </SimpleGrid>
+          </VStack>
+        </Container>
+      </Box>
+
+      {/* CTA Section */}
+      <Box py={20} bg="#544695" color="white">
+        <Container maxW="container.xl">
+          <VStack spacing={8} textAlign="center">
+            <Heading as="h2" size="xl">
+              Ready to Start Your Journey?
+            </Heading>
+            <Text fontSize="lg" maxW="2xl">
+              Join hundreds of successful students who have achieved their dreams of studying in China with our support.
+            </Text>
+            <Button
+              as={NextLink}
+              href="/contact"
+              size="lg"
+              bg="#FDB801"
+              _hover={{ bg: "#78C3BE" }}
+            >
+              Get Started Today
+            </Button>
+          </VStack>
+        </Container>
+      </Box>
+    </Box>
+  )
+}
+
+function FeatureCard({ icon, title, description }: { icon: any; title: string; description: string }) {
+  return (
+    <VStack
+      p={8}
+      bg="white"
+      borderRadius="xl"
+      boxShadow="md"
+      align="start"
+      spacing={4}
+      _hover={{ transform: 'translateY(-5px)', transition: 'all 0.3s ease' }}
+    >
+      <Icon as={icon} w={10} h={10} color="#544695" />
+      <Heading as="h3" size="md" color="#544695">
+        {title}
+      </Heading>
+      <Text color="gray.600">{description}</Text>
+    </VStack>
+  )
+}
+
+function TestimonialCard({ name, university, program, image, quote }: { name: string; university: string; program: string; image: string; quote: string }) {
+  return (
+    <Box
+      p={8}
+      bg="white"
+      borderRadius="xl"
+      boxShadow="md"
+      _hover={{ transform: 'translateY(-5px)', transition: 'all 0.3s ease' }}
+    >
+      <VStack align="start" spacing={4}>
+        <Text color="gray.600" fontSize="lg" fontStyle="italic">
+          "{quote}"
+        </Text>
+        <Flex align="center" gap={4}>
+          <Avatar name={name} src={image} />
+          <Box>
+            <Text fontWeight="bold" color="#544695">{name}</Text>
+            <Text fontSize="sm" color="gray.600">{university}</Text>
+            <Text fontSize="sm" color="gray.600">{program}</Text>
+          </Box>
+        </Flex>
+      </VStack>
+    </Box>
+  )
 }
