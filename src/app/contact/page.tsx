@@ -1,6 +1,8 @@
 'use client'
 
-import { Box, Container, Heading, Text, VStack, FormControl, FormLabel, Input, Textarea, Button, SimpleGrid } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, VStack, FormControl, FormLabel, Input, Textarea, Button, SimpleGrid, Icon, HStack, Link as ChakraLink } from '@chakra-ui/react'
+import { FaYoutube, FaFacebook, FaInstagram, FaTiktok, FaWeixin, FaWhatsapp } from 'react-icons/fa'
+import NextLink from 'next/link'
 import { FormEvent } from 'react'
 
 export default function Contact() {
@@ -18,10 +20,31 @@ export default function Contact() {
                         <Box>
                             <Heading size="md" mb={4}>Contact Information</Heading>
                             <VStack align="start" gap={3}>
-                                <Text>📍 123 Business Street, City, Country</Text>
-                                <Text>📞 +1 (555) 123-4567</Text>
-                                <Text>✉️ contact@business.com</Text>
+                                <Text><strong>Address:</strong> 1st Floor, Building 2, No. 89 Shuangqing Road, Haidian District, Beijing, China</Text>
+                                <Text><strong>Phone:</strong> (+86)13718403293</Text>
+                                <Text><strong>Email:</strong> glxer001@126.com</Text>
                             </VStack>
+                        </Box>
+
+                        {/* Social Media */}
+                        <Box>
+                            <Heading size="md" mb={4}>Social Media</Heading>
+                            <HStack spacing={4}>
+                                <ChakraLink as={NextLink} href="https://www.youtube.com/@EARLHOPPER-K3Z2Y" isExternal>
+                                    <Icon as={FaYoutube} w={6} h={6} />
+                                </ChakraLink>
+                                <ChakraLink as={NextLink} href="https://www.facebook.com/profile.php?id=61576295951035" isExternal>
+                                    <Icon as={FaFacebook} w={6} h={6} />
+                                </ChakraLink>
+                                <ChakraLink as={NextLink} href="https://www.instagram.com/chinastudyhub_cathy0126" isExternal>
+                                    <Icon as={FaInstagram} w={6} h={6} />
+                                </ChakraLink>
+                                <ChakraLink as={NextLink} href="https://www.tiktok.com/@chinastudyhub_cathy0126" isExternal>
+                                    <Icon as={FaTiktok} w={6} h={6} />
+                                </ChakraLink>
+                                <Icon as={FaWeixin} w={6} h={6} title="WeChat: chinastudyhub_coordinator" />
+                                <Icon as={FaWhatsapp} w={6} h={6} title="WhatsApp coming soon" />
+                            </HStack>
                         </Box>
                     </VStack>
 

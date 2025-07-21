@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Container, Heading, Text, SimpleGrid, Image, VStack } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, SimpleGrid, Image, VStack, UnorderedList, ListItem } from '@chakra-ui/react'
 
 interface TeamMember {
     name: string;
@@ -24,6 +24,66 @@ export default function About() {
                         </Text>
                     </VStack>
                 </VStack>
+
+                {/* Company Overview */}
+                <Box mt={20} mb={20} py={16} borderRadius="xl" bg="gray.50">
+                    <Container maxW="container.lg" mx="auto">
+                        <VStack spacing={8} align="center">
+                            <Heading size="2xl" textAlign="center">About ChinaStudyHub</Heading>
+                            <Text fontSize="xl" color="gray.600" textAlign="center" maxW="container.md">
+                                Established in 2016, ChinaStudyHub is a dynamic education service provider headquartered in Beijing, China.
+                                Specializing in cross-border educational exchange programs, conference curation, and comprehensive academic consulting,
+                                we have positioned ourselves as a reputable partner for international students, educational institutions, and organizations
+                                seeking tailored solutions in global education and cultural collaboration.
+                            </Text>
+                        </VStack>
+
+                        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10} mt={12} mb={12}>
+                            <VStack align="start" spacing={4} p={6} bg="white" borderRadius="lg" boxShadow="md">
+                                <Heading size="md" color="#544695">Student-Centric Services</Heading>
+                                <VStack spacing={3} align="start">
+                                    <Text color="gray.600">• Study Abroad Support: End-to-end assistance for international students, including university application, visa processing, and pre-arrival orientation</Text>
+                                    <Text color="gray.600">• Skill Development: Training programs covering academic writing, interview preparation, and cultural adaptation</Text>
+                                    <Text color="gray.600">• Post-Study Opportunities: Career counseling and internship placement services to bridge education and professional aspirations</Text>
+                                </VStack>
+                            </VStack>
+
+                            <VStack align="start" spacing={4} p={6} bg="white" borderRadius="lg" boxShadow="md">
+                                <Heading size="md" color="#544695">Educational Programs & Events</Heading>
+                                <VStack spacing={3} align="start">
+                                    <Text color="gray.600">• Study Tours & Exchange Programs: Curated short-term academic trips and cultural immersion activities</Text>
+                                    <Text color="gray.600">• International Education Exhibitions: Strategic collaborations with universities to organize global education fairs</Text>
+                                </VStack>
+                            </VStack>
+                        </SimpleGrid>
+                        <Text>
+                            We specialize in building a global network of educational resources. Our primary services include:
+                        </Text>
+                        <UnorderedList pl={6} spacing={2}>
+                            <ListItem>Domestic and international study exchange programs.</ListItem>
+                            <ListItem>Full-cycle services for studying in China.</ListItem>
+                            <ListItem>Overseas career consulting.</ListItem>
+                        </UnorderedList>
+                        <Text mt={4}>We particularly focus on offering comprehensive, end-to-end services for outstanding international students, which include:</Text>
+                        <UnorderedList pl={6} spacing={2}>
+                            <ListItem>Study abroad consultations.</ListItem>
+                            <ListItem>School and program selection guidance.</ListItem>
+                            <ListItem>Application assistance.</ListItem>
+                            <ListItem>Exam and interview coaching.</ListItem>
+                            <ListItem>Visa document review.</ListItem>
+                            <ListItem>Internship and employment consulting.</ListItem>
+                        </UnorderedList>
+                    </Container>
+                </Box>
+
+                {/* Success Stats */}
+                <Box mt={20} mb={20} bg="blue.50" py={16} borderRadius="xl">
+                    <SimpleGrid columns={{ base: 1, md: 3 }} gap={10} maxW="container.lg" mx="auto">
+                        <StatCard number="500+" label="Students Placed" />
+                        <StatCard number="95%" label="Scholarship Success Rate" />
+                        <StatCard number="50+" label="Partner Universities" />
+                    </SimpleGrid>
+                </Box>
 
                 {/* Why Choose Us Section */}
                 <VStack spacing={12} mb={20}>
@@ -85,13 +145,29 @@ export default function About() {
                     </SimpleGrid>
                 </VStack>
 
-                {/* Success Stats */}
-                <Box mt={20} bg="blue.50" py={16} borderRadius="xl">
-                    <SimpleGrid columns={{ base: 1, md: 3 }} gap={10} maxW="container.lg" mx="auto">
-                        <StatCard number="500+" label="Students Placed" />
-                        <StatCard number="95%" label="Scholarship Success Rate" />
-                        <StatCard number="50+" label="Partner Universities" />
-                    </SimpleGrid>
+
+                {/* Contact Information */}
+                <Box mt={20} py={16} borderRadius="xl" bg="blue.50">
+                    <Container maxW="container.lg" mx="auto">
+                        <VStack spacing={6} align="center">
+                            <Heading size="2xl" textAlign="center">Contact ChinaStudyHub</Heading>
+                            <Text fontSize="xl" color="gray.600" textAlign="center">
+                                ChinaStudyHub – Where Education Meets the World
+                            </Text>
+
+                            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} maxW="container.md">
+                                <VStack spacing={2} align="start">
+                                    <Text fontSize="lg" fontWeight="bold" color="blue.600">Address:</Text>
+                                    <Text color="gray.600">1st Floor, Building 2, No. 89 Shuangqing Road, Haidian District, Beijing, China</Text>
+                                </VStack>
+
+                                <VStack spacing={2} align="start">
+                                    <Text fontSize="lg" fontWeight="bold" color="blue.600">Email:</Text>
+                                    <Text color="gray.600">glxer001@126.com</Text>
+                                </VStack>
+                            </SimpleGrid>
+                        </VStack>
+                    </Container>
                 </Box>
             </Container>
         </Box>

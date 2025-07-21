@@ -11,6 +11,9 @@ import {
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
+    UnorderedList,
+    ListItem,
+    OrderedList,
 } from '@chakra-ui/react'
 
 export default function Guides() {
@@ -27,6 +30,40 @@ export default function Guides() {
                 </VStack>
 
                 <Accordion allowMultiple maxW="container.md" mx="auto">
+                    {/* ----------------------------- SERVICE SELECTION & PRICING ----------------------------- */}
+                    <AccordionItem mb={4} border="1px solid" borderColor="gray.200" borderRadius="lg">
+                        <h2>
+                            <AccordionButton py={4} _hover={{ bg: 'gray.50' }}>
+                                <Box flex="1" textAlign="left" fontWeight="bold" color="#544695">
+                                    Choosing the Right Service & Pricing
+                                </Box>
+                                <AccordionIcon />
+                            </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4}>
+                            <VStack align="start" gap={4}>
+                                <Text fontWeight="semibold">Our Four Service Tiers</Text>
+                                <UnorderedList pl={4} spacing={2}>
+                                    <ListItem><strong>Free University Consultation</strong> – Basic partner-school advice, no processing.</ListItem>
+                                    <ListItem><strong>Standard Package</strong> – Up to 2 university applications, $1500 incl. fees.</ListItem>
+                                    <ListItem><strong>Premium Full Package</strong> – Up to 4 top universities / MBBS / MBA, $2500 incl. fees, 1-on-1 support.</ListItem>
+                                    <ListItem><strong>Scholarship Assessment Support</strong> – Custom pricing after profile review.</ListItem>
+                                </UnorderedList>
+                                <Text fontWeight="semibold">Quick 3-Step Application</Text>
+                                <OrderedList pl={4} spacing={2}>
+                                    <ListItem>Visit chinastudyhub-c82h.vercel.app</ListItem>
+                                    <ListItem>Register and submit your information</ListItem>
+                                    <ListItem>Schedule a consultation with an expert</ListItem>
+                                </OrderedList>
+                                <Text fontWeight="semibold">Three Core Stages</Text>
+                                <UnorderedList pl={4} spacing={2}>
+                                    <ListItem><strong>School Selection</strong> – Background evaluation, recommendations, timeline planning.</ListItem>
+                                    <ListItem><strong>Application</strong> – Document preparation, submission, interview coaching.</ListItem>
+                                    <ListItem><strong>Admission</strong> – Offer evaluation, decision confirmation, arrival & accommodation guide.</ListItem>
+                                </UnorderedList>
+                            </VStack>
+                        </AccordionPanel>
+                    </AccordionItem>
                     {/* ----------------------------- APPLY TO UNIVERSITY ----------------------------- */}
                     <AccordionItem mb={4} border="1px solid" borderColor="gray.200" borderRadius="lg">
                         <h2>
