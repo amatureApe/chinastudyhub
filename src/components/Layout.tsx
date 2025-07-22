@@ -16,6 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <Flex gap={6}>
                             <Link as={NextLink} href="/" _hover={{ color: "#FDB801" }}>Home</Link>
                             <Link as={NextLink} href="/services" _hover={{ color: "#FDB801" }}>Services</Link>
+                            <Link as={NextLink} href="/partners" _hover={{ color: "#FDB801" }}>Partners</Link>
                             <Link as={NextLink} href="/guides" _hover={{ color: "#FDB801" }}>Guides</Link>
                             <Link as={NextLink} href="/about" _hover={{ color: "#FDB801" }}>About</Link>
                             <Link as={NextLink} href="/contact" _hover={{ color: "#FDB801" }}>Contact</Link>
