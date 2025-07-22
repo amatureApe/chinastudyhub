@@ -4,7 +4,12 @@ import { Box, Container, Heading, Text, VStack, Table, Thead, Tbody, Tr, Th, Td,
 import { useState, useEffect } from 'react'
 
 interface UniversityData {
-    [key: string]: string
+    University: string
+    Majors: string
+    'Annual Tuition': string
+    'Chinese (HSK≥)': string
+    English: string
+    Other: string
 }
 
 export default function Partners() {
@@ -42,31 +47,27 @@ export default function Partners() {
                         <Table variant="simple" size="sm">
                             <Thead bg="gray.50">
                                 <Tr>
-                                    <Th>序号</Th>
-                                    <Th>Majors</Th>
-                                    <Th>Chinese (HSK≥)</Th>
-                                    <Th>English (IELTS≥)</Th>
-                                    <Th>English (TOEFL≥)</Th>
-                                    <Th>Other</Th>
                                     <Th>University</Th>
+                                    <Th>Majors</Th>
                                     <Th>Annual Tuition</Th>
+                                    <Th>Chinese (HSK≥)</Th>
+                                    <Th>English</Th>
+                                    <Th>Other</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
-                                {universityData.slice(3).map((row, index) => (
+                                {universityData.slice(1).map((row, index) => (
                                     <Tr key={index} _hover={{ bg: 'gray.50' }}>
-                                        <Td fontWeight="medium">{row["Partner Universities' Undergraduate Majors and Tuition Information"]}</Td>
-                                        <Td maxW="300px" fontSize="sm">
-                                            {row.field2.split('\n').map((major, idx) => (
+                                        <Td fontWeight="medium" color="#544695">{row.University}</Td>
+                                        <Td maxW="400px" fontSize="sm">
+                                            {row.Majors ? row.Majors.split('\n').map((major, idx) => (
                                                 <Text key={idx} mb={1}>{major.trim()}</Text>
-                                            ))}
+                                            )) : <Text>-</Text>}
                                         </Td>
-                                        <Td>{row.field3}</Td>
-                                        <Td>{row.field4}</Td>
-                                        <Td>{row.field5}</Td>
-                                        <Td>{row.field6}</Td>
-                                        <Td fontWeight="medium" color="#544695">{row.field7}</Td>
-                                        <Td fontWeight="bold">{row.field8}</Td>
+                                        <Td fontWeight="bold">{row['Annual Tuition']}</Td>
+                                        <Td>{row['Chinese (HSK≥)']}</Td>
+                                        <Td>{row.English}</Td>
+                                        <Td>{row.Other}</Td>
                                     </Tr>
                                 ))}
                             </Tbody>
