@@ -40,7 +40,7 @@ export default function Partners() {
                 {/* Partner Universities Table */}
                 <Box bg="white" borderRadius="xl" boxShadow="lg" overflow="hidden">
                     <Box bg="#544695" color="white" p={6}>
-                        <Heading size="lg" textAlign="center">Partner Universities' Undergraduate Majors and Tuition Information</Heading>
+                        <Heading size="lg" textAlign="center">Partner Universities&apos; Undergraduate Majors and Tuition Information</Heading>
                     </Box>
 
                     <TableContainer>
@@ -82,7 +82,7 @@ export default function Partners() {
                         <Text fontSize="lg" color="gray.600" textAlign="center" maxW="container.md">
                             Our partner universities represent the best of Chinese higher education, offering world-class programs
                             in engineering, business, arts, and sciences. With our established relationships, we can provide
-                            personalized guidance for each institution's specific requirements and application processes.
+                            personalized guidance for each institution&apos;s specific requirements and application processes.
                         </Text>
                     </VStack>
                 </Box>

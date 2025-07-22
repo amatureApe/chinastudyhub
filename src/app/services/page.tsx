@@ -171,7 +171,7 @@ export default function Services() {
 
                     <Text fontWeight='bold' mt={4}>Our Service Standards:</Text>
                     <UnorderedList pl={6} spacing={2}>
-                        <ListItem>Original "5A service standard" – Assessment, Application, Arrival, Studies, and Employment.</ListItem>
+                        <ListItem>Original &quot;5A service standard&quot; – Assessment, Application, Arrival, Studies, and Employment.</ListItem>
                         <ListItem>Multi-language service team – Support available in English, Chinese, Japanese, Korean, and Spanish.</ListItem>
                     </UnorderedList>
                 </VStack>
