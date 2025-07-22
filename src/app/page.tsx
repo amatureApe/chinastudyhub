@@ -55,21 +55,21 @@ export default function Home() {
   return (
     <Box>
       {/* Hero Section */}
-      <Box bg="white" py={20}>
+      <Box bg="white" py={{ base: 12, md: 20 }}>
         <Container maxW="container.xl">
           <Flex direction={{ base: 'column', md: 'row' }} align="center" gap={8}>
             <Box flex={1}>
-              <Heading as="h1" size="2xl" mb={6} color="#544695">
+              <Heading as="h1" size={{ base: "xl", md: "2xl" }} mb={6} color="#544695">
                 Your Gateway to Chinese Education
               </Heading>
-              <Text fontSize="xl" mb={8} color="gray.600">
+              <Text fontSize={{ base: "lg", md: "xl" }} mb={8} color="gray.600">
                 Comprehensive support for international students applying to Chinese universities. From application assistance to visa support, we guide you every step of the way.
               </Text>
-              <Flex gap={4}>
-                <Button as={Link} href="/services" colorScheme="purple" size="lg" bg="#544695" _hover={{ bg: "#FDB801" }}>
+              <Flex gap={4} direction={{ base: "column", sm: "row" }}>
+                <Button as={Link} href="/services" colorScheme="purple" size={{ base: "md", md: "lg" }} bg="#544695" _hover={{ bg: "#FDB801" }}>
                   Our Services
                 </Button>
-                <Button as={Link} href="/contact" variant="outline" size="lg" borderColor="#544695" color="#544695" _hover={{ bg: "#544695", color: "white" }}>
+                <Button as={Link} href="/contact" variant="outline" size={{ base: "md", md: "lg" }} borderColor="#544695" color="#544695" _hover={{ bg: "#544695", color: "white" }}>
                   Contact Us
                 </Button>
               </Flex>
@@ -92,18 +92,18 @@ export default function Home() {
       </Box>
 
       {/* Features Section */}
-      <Box py={20} bg="gray.50">
+      <Box py={{ base: 12, md: 20 }} bg="gray.50">
         <Container maxW="container.xl">
-          <VStack spacing={12}>
+          <VStack spacing={{ base: 8, md: 12 }}>
             <Box textAlign="center">
-              <Heading as="h2" size="xl" mb={4} color="#544695">
+              <Heading as="h2" size={{ base: "lg", md: "xl" }} mb={4} color="#544695">
                 Why Choose ChinaStudyHub?
               </Heading>
-              <Text fontSize="lg" color="gray.600">
+              <Text fontSize={{ base: "md", md: "lg" }} color="gray.600">
                 We provide comprehensive support throughout your journey to studying in China
               </Text>
             </Box>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} w="full">
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={{ base: 6, md: 8 }} w="full">
               <FeatureCard
                 icon={FaUniversity}
                 title="University Selection"
@@ -130,18 +130,18 @@ export default function Home() {
       </Box>
 
       {/* Testimonials Section */}
-      <Box py={20} bg="white">
+      <Box py={{ base: 12, md: 20 }} bg="white">
         <Container maxW="container.xl">
-          <VStack spacing={12}>
+          <VStack spacing={{ base: 8, md: 12 }}>
             <Box textAlign="center">
-              <Heading as="h2" size="xl" mb={4} color="#544695">
+              <Heading as="h2" size={{ base: "lg", md: "xl" }} mb={4} color="#544695">
                 Student Success Stories
               </Heading>
-              <Text fontSize="lg" color="gray.600">
+              <Text fontSize={{ base: "md", md: "lg" }} color="gray.600">
                 Hear from our students who have successfully started their journey in China
               </Text>
             </Box>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8} w="full">
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={{ base: 6, md: 8 }} w="full">
               {testimonials.map((testimonial: Testimonial, index: number) => (
                 <TestimonialCard
                   key={index}
@@ -158,19 +158,19 @@ export default function Home() {
       </Box>
 
       {/* CTA Section */}
-      <Box py={20} bg="#544695" color="white">
+      <Box py={{ base: 12, md: 20 }} bg="#544695" color="white">
         <Container maxW="container.xl">
-          <VStack spacing={8} textAlign="center">
-            <Heading as="h2" size="xl">
+          <VStack spacing={{ base: 6, md: 8 }} textAlign="center">
+            <Heading as="h2" size={{ base: "lg", md: "xl" }}>
               Ready to Start Your Journey?
             </Heading>
-            <Text fontSize="lg" maxW="2xl">
+            <Text fontSize={{ base: "md", md: "lg" }} maxW="2xl">
               Join hundreds of successful students who have achieved their dreams of studying in China with our support.
             </Text>
             <Button
               as={Link}
               href="/contact"
-              size="lg"
+              size={{ base: "md", md: "lg" }}
               bg="#FDB801"
               _hover={{ bg: "#78C3BE" }}
             >
@@ -186,7 +186,7 @@ export default function Home() {
 function FeatureCard({ icon, title, description }: { icon: React.ElementType; title: string; description: string }) {
   return (
     <VStack
-      p={8}
+      p={{ base: 6, md: 8 }}
       bg="white"
       borderRadius="xl"
       boxShadow="md"
@@ -194,11 +194,11 @@ function FeatureCard({ icon, title, description }: { icon: React.ElementType; ti
       spacing={4}
       _hover={{ transform: 'translateY(-5px)', transition: 'all 0.3s ease' }}
     >
-      <Icon as={icon} w={10} h={10} color="#544695" />
-      <Heading as="h3" size="md" color="#544695">
+      <Icon as={icon} w={{ base: 8, md: 10 }} h={{ base: 8, md: 10 }} color="#544695" />
+      <Heading as="h3" size={{ base: "sm", md: "md" }} color="#544695">
         {title}
       </Heading>
-      <Text color="gray.600">{description}</Text>
+      <Text color="gray.600" fontSize={{ base: "sm", md: "md" }}>{description}</Text>
     </VStack>
   )
 }
@@ -214,7 +214,7 @@ interface TestimonialCardProps {
 function TestimonialCard({ name, university, program, image, quote }: TestimonialCardProps) {
   return (
     <VStack
-      p={6}
+      p={{ base: 4, md: 6 }}
       bg="white"
       borderRadius="lg"
       boxShadow="md"
@@ -222,15 +222,15 @@ function TestimonialCard({ name, university, program, image, quote }: Testimonia
       spacing={4}
     >
       <VStack align="start" spacing={4}>
-        <Text color="gray.600" fontSize="lg" fontStyle="italic">
+        <Text color="gray.600" fontSize={{ base: "sm", md: "lg" }} fontStyle="italic">
           &quot;{quote}&quot;
         </Text>
-        <Flex align="center" gap={4}>
-          <Avatar src={image} name={name} />
-          <VStack align="start" spacing={0}>
-            <Text fontWeight="bold" color="#544695">{name}</Text>
-            <Text color="gray.500">{university}</Text>
-            <Text color="gray.500" fontSize="sm">{program}</Text>
+        <Flex align="center" gap={4} direction={{ base: "column", sm: "row" }} w="full">
+          <Avatar src={image} name={name} size={{ base: "md", md: "lg" }} />
+          <VStack align={{ base: "center", sm: "start" }} spacing={0}>
+            <Text fontWeight="bold" color="#544695" fontSize={{ base: "sm", md: "md" }}>{name}</Text>
+            <Text color="gray.500" fontSize={{ base: "xs", md: "sm" }} textAlign={{ base: "center", sm: "left" }}>{university}</Text>
+            <Text color="gray.500" fontSize={{ base: "xs", md: "sm" }} textAlign={{ base: "center", sm: "left" }}>{program}</Text>
           </VStack>
         </Flex>
       </VStack>
