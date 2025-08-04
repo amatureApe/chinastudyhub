@@ -40,33 +40,19 @@ export default function Partners() {
         let totalMatches = 0
 
         universityData.slice(1).forEach((university) => {
-            // Check if university name or other fields match
-            const universityMatches = university.University.toLowerCase().includes(searchLower) ||
-                university['Annual Tuition'].toLowerCase().includes(searchLower) ||
-                university['Chinese (HSK≥)'].toLowerCase().includes(searchLower) ||
-                university.English.toLowerCase().includes(searchLower) ||
-                university.Other.toLowerCase().includes(searchLower)
-
             // Filter majors that match the search term
             const matchingMajors = university.Majors
                 ? university.Majors.split('\n')
                     .filter(major => major.toLowerCase().includes(searchLower))
                 : []
 
-            // Include university if it matches OR if it has matching majors
-            if (universityMatches || matchingMajors.length > 0) {
-                if (universityMatches) {
-                    // If university-level match, show all majors and count them
-                    results.push(university)
-                    totalMatches += university.Majors ? university.Majors.split('\n').length : 0
-                } else {
-                    // If only major-level matches, show only matching majors
-                    results.push({
-                        ...university,
-                        Majors: matchingMajors.join('\n')
-                    })
-                    totalMatches += matchingMajors.length
-                }
+            // Include university only if it has matching majors
+            if (matchingMajors.length > 0) {
+                results.push({
+                    ...university,
+                    Majors: matchingMajors.join('\n')
+                })
+                totalMatches += matchingMajors.length
             }
         })
 
@@ -93,16 +79,16 @@ export default function Partners() {
                     </VStack>
 
                     {/* Search Input */}
-                    <Box maxW="md" w="full" mb={-10}>
+                    <Box maxW={{ base: "full", md: "md" }} w="full" mb={-10} px={{ base: 4, md: 0 }}>
                         <InputGroup>
                             <InputLeftElement pointerEvents="none">
                                 <Icon as={FaSearch} color="gray.400" />
                             </InputLeftElement>
                             <Input
-                                placeholder="Search universities, majors, tuition..."
+                                placeholder="Search Programs"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                size="lg"
+                                size={{ base: "md", md: "lg" }}
                                 borderRadius="full"
                                 bg="white"
                                 border="2px solid"
@@ -112,7 +98,7 @@ export default function Partners() {
                             />
                         </InputGroup>
                         {searchTerm && (
-                            <Text fontSize="sm" color="gray.600" mt={2} textAlign="center">
+                            <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600" mt={2} textAlign="center">
                                 Found {totalMatches} program{totalMatches !== 1 ? 's' : ''} across {filteredData.length} universit{filteredData.length !== 1 ? 'ies' : 'y'}
                             </Text>
                         )}
