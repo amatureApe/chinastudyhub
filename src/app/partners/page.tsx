@@ -1,7 +1,8 @@
 'use client'
 
-import { Box, Container, Heading, Text, VStack, Table, Thead, Tbody, Tr, Th, Td, TableContainer, SimpleGrid, Card, CardBody, Badge } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, VStack, Table, Thead, Tbody, Tr, Th, Td, TableContainer, SimpleGrid, Card, CardBody, Badge, Input, InputGroup, InputLeftElement, Icon } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
+import { FaSearch } from 'react-icons/fa'
 
 interface UniversityData {
     University: string
@@ -14,6 +15,7 @@ interface UniversityData {
 
 export default function Partners() {
     const [universityData, setUniversityData] = useState<UniversityData[]>([])
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         fetch('/tableData.json')
@@ -21,6 +23,60 @@ export default function Partners() {
             .then(data => setUniversityData(data))
             .catch(error => console.error('Error loading university data:', error))
     }, [])
+
+    // Filter and process universities based on search term
+    const getFilteredData = () => {
+        if (!searchTerm) {
+            return {
+                universities: universityData.slice(1),
+                totalMatches: universityData.slice(1).reduce((total, uni) => {
+                    return total + (uni.Majors ? uni.Majors.split('\n').length : 0)
+                }, 0)
+            }
+        }
+
+        const searchLower = searchTerm.toLowerCase()
+        const results: UniversityData[] = []
+        let totalMatches = 0
+
+        universityData.slice(1).forEach((university) => {
+            // Check if university name or other fields match
+            const universityMatches = university.University.toLowerCase().includes(searchLower) ||
+                university['Annual Tuition'].toLowerCase().includes(searchLower) ||
+                university['Chinese (HSK≥)'].toLowerCase().includes(searchLower) ||
+                university.English.toLowerCase().includes(searchLower) ||
+                university.Other.toLowerCase().includes(searchLower)
+
+            // Filter majors that match the search term
+            const matchingMajors = university.Majors
+                ? university.Majors.split('\n')
+                    .filter(major => major.toLowerCase().includes(searchLower))
+                : []
+
+            // Include university if it matches OR if it has matching majors
+            if (universityMatches || matchingMajors.length > 0) {
+                if (universityMatches) {
+                    // If university-level match, show all majors and count them
+                    results.push(university)
+                    totalMatches += university.Majors ? university.Majors.split('\n').length : 0
+                } else {
+                    // If only major-level matches, show only matching majors
+                    results.push({
+                        ...university,
+                        Majors: matchingMajors.join('\n')
+                    })
+                    totalMatches += matchingMajors.length
+                }
+            }
+        })
+
+        return {
+            universities: results,
+            totalMatches
+        }
+    }
+
+    const { universities: filteredData, totalMatches } = getFilteredData()
 
     return (
         <Box py={{ base: 12, md: 20 }}>
@@ -35,6 +91,32 @@ export default function Partners() {
                             direct application support and increase your chances of admission to these renowned institutions.
                         </Text>
                     </VStack>
+
+                    {/* Search Input */}
+                    <Box maxW="md" w="full" mb={-10}>
+                        <InputGroup>
+                            <InputLeftElement pointerEvents="none">
+                                <Icon as={FaSearch} color="gray.400" />
+                            </InputLeftElement>
+                            <Input
+                                placeholder="Search universities, majors, tuition..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                size="lg"
+                                borderRadius="full"
+                                bg="white"
+                                border="2px solid"
+                                borderColor="gray.200"
+                                _hover={{ borderColor: "#544695" }}
+                                _focus={{ borderColor: "#544695", boxShadow: "0 0 0 1px #544695" }}
+                            />
+                        </InputGroup>
+                        {searchTerm && (
+                            <Text fontSize="sm" color="gray.600" mt={2} textAlign="center">
+                                Found {totalMatches} program{totalMatches !== 1 ? 's' : ''} across {filteredData.length} universit{filteredData.length !== 1 ? 'ies' : 'y'}
+                            </Text>
+                        )}
+                    </Box>
                 </VStack>
 
                 {/* Partner Universities Table - Desktop */}
@@ -56,7 +138,7 @@ export default function Partners() {
                                 </Tr>
                             </Thead>
                             <Tbody>
-                                {universityData.slice(1).map((row, index) => (
+                                {filteredData.map((row, index) => (
                                     <Tr key={index} _hover={{ bg: 'gray.50' }}>
                                         <Td fontWeight="medium" color="#544695">{row.University}</Td>
                                         <Td maxW="400px" fontSize="sm">
@@ -82,7 +164,7 @@ export default function Partners() {
                     </Box>
 
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                        {universityData.slice(1).map((row, index) => (
+                        {filteredData.map((row, index) => (
                             <UniversityCard key={index} data={row} />
                         ))}
                     </SimpleGrid>
