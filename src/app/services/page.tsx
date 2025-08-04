@@ -1,7 +1,7 @@
 'use client'
 
 import { Box, Container, Heading, Text, SimpleGrid, VStack, Icon, Flex, Badge, Divider } from '@chakra-ui/react'
-import { FaGraduationCap, FaMoneyBillWave, FaUniversity, FaAward, FaCheckCircle, FaClock, FaUsers } from 'react-icons/fa'
+import { FaGraduationCap, FaMoneyBillWave, FaUniversity, FaAward } from 'react-icons/fa'
 import React from 'react'
 import { UnorderedList, ListItem } from '@chakra-ui/react'
 
@@ -62,7 +62,7 @@ const serviceTiers: ServiceTier[] = [
     },
     {
         title: 'Scholarship Assessment Support',
-        price: 'Custom',
+        price: '',
         description: 'Scholarship eligibility assessment & professor recommendations (UG/Masters/PhD).',
         features: [
             'Scholarship qualification audit',
@@ -90,7 +90,7 @@ export default function Services() {
 
                 {/* Platform Introduction */}
                 <VStack spacing={6} mb={{ base: 16, md: 20 }} align='start' bg='gray.50' p={{ base: 6, md: 8 }} borderRadius='xl'>
-                    <Heading size={{ base: 'lg', md: 'xl' }}>ChinaStudyHub Platform Introduction</Heading>
+                    <Heading size={{ base: 'lg', md: 'xl' }}>ChinaStudyHub Platform</Heading>
                     <Text fontSize={{ base: 'sm', md: 'md' }}>
                         Founded in 2016, ChinaStudyHub is an online platform dedicated to assisting international students applying to Chinese universities. We specialize in building a global network of educational resources. Our primary services include:
                     </Text>
@@ -105,7 +105,7 @@ export default function Services() {
                         <ListItem>School and program selection guidance.</ListItem>
                         <ListItem>Application assistance.</ListItem>
                         <ListItem>Exam and interview coaching.</ListItem>
-                        <ListItem>Visa document review.</ListItem>
+                        <ListItem>Visa application assistance.</ListItem>
                         <ListItem>Internship and employment consulting.</ListItem>
                     </UnorderedList>
                 </VStack>
@@ -118,30 +118,18 @@ export default function Services() {
                     </Text>
                 </VStack>
 
-                <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={{ base: 6, md: 10 }}>
-                    {serviceTiers.map((tier, idx) => (
+                {/* First 3 Service Tiers in a Row */}
+                <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 6, md: 10 }} mb={{ base: 6, md: 10 }}>
+                    {serviceTiers.slice(0, 3).map((tier, idx) => (
                         <ServiceTierCard key={idx} tier={tier} />
                     ))}
                 </SimpleGrid>
 
-                {/* Study Challenges Section */}
-                <VStack spacing={6} mb={{ base: 16, md: 20 }} mt={{ base: 16, md: 20 }} align='start' bg='gray.50' p={{ base: 6, md: 8 }} borderWidth='2px' borderColor='#544695' borderRadius='xl'>
-                    <VStack spacing={6} align="start">
-                        <Heading size={{ base: 'lg', md: 'xl' }}>Study Challenges</Heading>
-                        <Text fontWeight="bold" fontSize={{ base: 'sm', md: 'md' }}>International Student Challenges:</Text>
-                        <UnorderedList pl={6} spacing={3} fontSize={{ base: 'sm', md: 'md' }}>
-                            <ListItem>
-                                <strong>Challenge 1:</strong> Difficulty in course search & information gathering – Many students struggle to find clear, reliable details about courses, universities, and application requirements.
-                            </ListItem>
-                            <ListItem>
-                                <strong>Challenge 2:</strong> Complex university & program selection – With countless universities and majors to choose from, it can be challenging to make informed and optimal decisions.
-                            </ListItem>
-                            <ListItem>
-                                <strong>Challenge 3:</strong> Unclear application process – The steps involved in applying are often confusing, opportunities can seem vague, and students are unsure how to proceed effectively.
-                            </ListItem>
-                        </UnorderedList>
-                    </VStack>
-                </VStack>
+                {/* Scholarship Assessment Support - Full Width */}
+                <Box maxW="container.lg" mx="auto">
+                    <ServiceTierCard tier={serviceTiers[3]} isFullWidth />
+                </Box>
+
 
                 {/* How We Help & Why Choose Us */}
                 <VStack spacing={6} mb={{ base: 16, md: 20 }} mt={{ base: 16, md: 20 }} align='start' bg='gray.50' p={{ base: 6, md: 8 }} borderWidth='2px' borderColor='#544695' borderRadius='xl'>
@@ -176,26 +164,12 @@ export default function Services() {
                     </UnorderedList>
                 </VStack>
 
-                {/* Quick Application Steps */}
-                <VStack spacing={6} mb={{ base: 16, md: 20 }} mt={{ base: 16, md: 20 }} align='start' bg='gray.50' p={{ base: 6, md: 8 }} borderWidth='2px' borderColor='#544695' borderRadius='xl'>
-                    <Container maxW='container.md'>
-                        <VStack spacing={6} align='center'>
-                            <Heading size={{ base: 'md', md: 'lg' }} textAlign='center'>Quick Application Process</Heading>
-                            <Text fontSize={{ base: 'md', md: 'lg' }} color='gray.600' textAlign='center'>Follow these three simple steps to get started</Text>
-                            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-                                <Step icon={FaCheckCircle} title='Step 1' text='Visit our website' />
-                                <Step icon={FaUsers} title='Step 2' text='Register & submit info' />
-                                <Step icon={FaClock} title='Step 3' text='Schedule consultation' />
-                            </SimpleGrid>
-                        </VStack>
-                    </Container>
-                </VStack>
             </Container>
         </Box>
     )
 }
 
-function ServiceTierCard({ tier }: { tier: ServiceTier }) {
+function ServiceTierCard({ tier, isFullWidth = false }: { tier: ServiceTier; isFullWidth?: boolean }) {
     return (
         <Box
             p={{ base: 6, md: 8 }}
@@ -205,32 +179,45 @@ function ServiceTierCard({ tier }: { tier: ServiceTier }) {
             _hover={{ transform: 'translateY(-4px)', shadow: 'lg' }}
             transition='all 0.25s'
         >
-            <VStack align='start' spacing={4}>
-                <Flex align='center' gap={4} direction={{ base: 'column', sm: 'row' }} w="full">
+            <VStack align='start' spacing={isFullWidth ? 6 : 4}>
+                <Flex align='center' gap={4} direction={{ base: 'column', sm: 'row' }} w="full" justify={isFullWidth ? "center" : "start"}>
                     <Icon as={tier.icon} w={{ base: 6, md: 8 }} h={{ base: 6, md: 8 }} color={tier.color} />
                     <Heading size={{ base: 'sm', md: 'md' }} color={tier.color}>{tier.title}</Heading>
                     {tier.badge && <Badge colorScheme='purple' fontSize={{ base: 'xs', md: 'sm' }}>{tier.badge}</Badge>}
                 </Flex>
 
-                <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight='bold' color={tier.color}>{tier.price}</Text>
-                <Text color='gray.600' fontSize={{ base: 'sm', md: 'md' }}>{tier.description}</Text>
+                {isFullWidth ? (
+                    <VStack spacing={6} w="full">
+                        <Text color='gray.600' fontSize={{ base: 'sm', md: 'md' }} lineHeight="1.5" textAlign="center">
+                            {tier.description}
+                        </Text>
+                        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} w="full">
+                            <UnorderedList pl={6} spacing={2} fontSize={{ base: 'sm', md: 'md' }}>
+                                {tier.features.slice(0, Math.ceil(tier.features.length / 2)).map((feat, idx) => (
+                                    <ListItem key={idx}>{feat}</ListItem>
+                                ))}
+                            </UnorderedList>
+                            <UnorderedList pl={6} spacing={2} fontSize={{ base: 'sm', md: 'md' }}>
+                                {tier.features.slice(Math.ceil(tier.features.length / 2)).map((feat, idx) => (
+                                    <ListItem key={idx + Math.ceil(tier.features.length / 2)}>{feat}</ListItem>
+                                ))}
+                            </UnorderedList>
+                        </SimpleGrid>
+                    </VStack>
+                ) : (
+                    <>
+                        <Text fontSize={{ base: 'lg', md: 'xl' }} fontWeight='bold' color={tier.color}>{tier.price}</Text>
+                        <Text color='gray.600' fontSize={{ base: 'sm', md: 'md' }}>{tier.description}</Text>
 
-                <UnorderedList pl={6} spacing={1} fontSize={{ base: 'sm', md: 'md' }}>
-                    {tier.features.map((feat, idx) => (
-                        <ListItem key={idx}>{feat}</ListItem>
-                    ))}
-                </UnorderedList>
+                        <UnorderedList pl={6} spacing={1} fontSize={{ base: 'sm', md: 'md' }}>
+                            {tier.features.map((feat, idx) => (
+                                <ListItem key={idx}>{feat}</ListItem>
+                            ))}
+                        </UnorderedList>
+                    </>
+                )}
             </VStack>
         </Box>
     )
 }
 
-function Step({ icon, title, text }: { icon: React.ElementType; title: string; text: string }) {
-    return (
-        <VStack spacing={3} align='center'>
-            <Icon as={icon} w={{ base: 6, md: 8 }} h={{ base: 6, md: 8 }} color='blue.500' />
-            <Text fontWeight='bold' fontSize={{ base: 'sm', md: 'md' }}>{title}</Text>
-            <Text color='gray.600' textAlign='center' fontSize={{ base: 'sm', md: 'md' }}>{text}</Text>
-        </VStack>
-    )
-} 

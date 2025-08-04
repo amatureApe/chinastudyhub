@@ -10,7 +10,7 @@ import {
   SimpleGrid,
   Icon,
   Flex,
-  Avatar
+  Image
 } from '@chakra-ui/react'
 import { FaGraduationCap, FaUniversity, FaLanguage, FaHandshake } from 'react-icons/fa'
 import Link from 'next/link'
@@ -76,15 +76,19 @@ export default function Home() {
             </Box>
             <Box flex={1} display={{ base: 'none', md: 'block' }}>
               <Box
-                bg="#78C3BE"
                 w="full"
                 h="400px"
                 borderRadius="xl"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
+                overflow="hidden"
+                boxShadow="lg"
               >
-                <Icon as={FaGraduationCap} w={32} h={32} color="white" />
+                <Image
+                  src="/home-page-photo.jpg"
+                  alt="Students studying in China"
+                  w="full"
+                  h="full"
+                  objectFit="cover"
+                />
               </Box>
             </Box>
           </Flex>
@@ -211,7 +215,7 @@ interface TestimonialCardProps {
   quote: string;
 }
 
-function TestimonialCard({ name, university, program, image, quote }: TestimonialCardProps) {
+function TestimonialCard({ name, university, program, quote }: TestimonialCardProps) {
   return (
     <VStack
       p={{ base: 4, md: 6 }}
@@ -225,14 +229,11 @@ function TestimonialCard({ name, university, program, image, quote }: Testimonia
         <Text color="gray.600" fontSize={{ base: "sm", md: "lg" }} fontStyle="italic">
           &quot;{quote}&quot;
         </Text>
-        <Flex align="center" gap={4} direction={{ base: "column", sm: "row" }} w="full">
-          <Avatar src={image} name={name} size={{ base: "md", md: "lg" }} />
-          <VStack align={{ base: "center", sm: "start" }} spacing={0}>
-            <Text fontWeight="bold" color="#544695" fontSize={{ base: "sm", md: "md" }}>{name}</Text>
-            <Text color="gray.500" fontSize={{ base: "xs", md: "sm" }} textAlign={{ base: "center", sm: "left" }}>{university}</Text>
-            <Text color="gray.500" fontSize={{ base: "xs", md: "sm" }} textAlign={{ base: "center", sm: "left" }}>{program}</Text>
-          </VStack>
-        </Flex>
+        <VStack align={{ base: "center", sm: "start" }} spacing={2} w="full">
+          <Text fontWeight="bold" color="#544695" fontSize={{ base: "sm", md: "md" }}>{name}</Text>
+          <Text color="gray.500" fontSize={{ base: "xs", md: "sm" }} textAlign={{ base: "center", sm: "left" }}>{university}</Text>
+          <Text color="gray.500" fontSize={{ base: "xs", md: "sm" }} textAlign={{ base: "center", sm: "left" }}>{program}</Text>
+        </VStack>
       </VStack>
     </VStack>
   )

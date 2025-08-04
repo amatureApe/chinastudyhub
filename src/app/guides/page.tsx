@@ -13,7 +13,6 @@ import {
     AccordionIcon,
     UnorderedList,
     ListItem,
-    OrderedList,
 } from '@chakra-ui/react'
 
 export default function Guides() {
@@ -30,37 +29,27 @@ export default function Guides() {
                 </VStack>
 
                 <Accordion allowMultiple maxW="container.md" mx="auto">
-                    {/* ----------------------------- SERVICE SELECTION & PRICING ----------------------------- */}
+                    {/* ----------------------------- WHY STUDY IN CHINA ----------------------------- */}
                     <AccordionItem mb={4} border="1px solid" borderColor="gray.200" borderRadius="lg">
                         <h2>
                             <AccordionButton py={{ base: 3, md: 4 }} _hover={{ bg: 'gray.50' }}>
                                 <Box flex="1" textAlign="left" fontWeight="bold" color="#544695" fontSize={{ base: "sm", md: "md" }}>
-                                    Choosing the Right Service & Pricing
+                                    Why Study in China?
                                 </Box>
                                 <AccordionIcon />
                             </AccordionButton>
                         </h2>
                         <AccordionPanel pb={4}>
                             <VStack align="start" gap={4}>
-                                <Text fontWeight="semibold" fontSize={{ base: "sm", md: "md" }}>Our Four Service Tiers</Text>
-                                <UnorderedList pl={4} spacing={2} fontSize={{ base: "sm", md: "md" }}>
-                                    <ListItem><strong>Free University Consultation</strong> – Basic partner-school advice, no processing.</ListItem>
-                                    <ListItem><strong>Standard Package</strong> – Up to 2 university applications, $1500 incl. fees.</ListItem>
-                                    <ListItem><strong>Premium Full Package</strong> – Up to 4 top universities / MBBS / MBA, $2500 incl. fees, 1-on-1 support.</ListItem>
-                                    <ListItem><strong>Scholarship Assessment Support</strong> – Custom pricing after profile review.</ListItem>
-                                </UnorderedList>
-                                <Text fontWeight="semibold" fontSize={{ base: "sm", md: "md" }}>Quick 3-Step Application</Text>
-                                <OrderedList pl={4} spacing={2} fontSize={{ base: "sm", md: "md" }}>
-                                    <ListItem>Visit chinastudyhub-c82h.vercel.app</ListItem>
-                                    <ListItem>Register and submit your information</ListItem>
-                                    <ListItem>Schedule a consultation with an expert</ListItem>
-                                </OrderedList>
-                                <Text fontWeight="semibold" fontSize={{ base: "sm", md: "md" }}>Three Core Stages</Text>
-                                <UnorderedList pl={4} spacing={2} fontSize={{ base: "sm", md: "md" }}>
-                                    <ListItem><strong>School Selection</strong> – Background evaluation, recommendations, timeline planning.</ListItem>
-                                    <ListItem><strong>Application</strong> – Document preparation, submission, interview coaching.</ListItem>
-                                    <ListItem><strong>Admission</strong> – Offer evaluation, decision confirmation, arrival & accommodation guide.</ListItem>
-                                </UnorderedList>
+                                <Text fontSize={{ base: "sm", md: "md" }}>
+                                    China has emerged as one of the world&apos;s leading destinations for international education, offering students unprecedented opportunities to experience the world&apos;s second-largest economy firsthand. With over 400,000 international students currently studying in China, the country provides access to world-class universities, cutting-edge research facilities, and immersive cultural experiences that prepare graduates for an increasingly interconnected global marketplace. Chinese universities consistently rank among the world&apos;s top institutions, particularly in fields like engineering, technology, medicine, and business.
+                                </Text>
+                                <Text fontSize={{ base: "sm", md: "md" }}>
+                                    Beyond academic excellence, studying in China offers unparalleled professional advantages. Students gain fluency in Mandarin—the world&apos;s most spoken language—while building networks in the world&apos;s fastest-growing major economy. The Chinese government&apos;s Belt and Road Initiative has created massive demand for internationally-educated professionals who understand both Chinese culture and global business practices. Additionally, China&apos;s generous scholarship programs, including the Chinese Government Scholarship, make quality education remarkably affordable, with many students receiving full tuition coverage plus living stipends.
+                                </Text>
+                                <Text fontSize={{ base: "sm", md: "md" }}>
+                                    The cultural immersion experience in China is transformative, offering students the chance to witness history in the making while exploring 5,000 years of rich heritage. From the bustling innovation hubs of Shenzhen and Shanghai to the ancient temples of Beijing and Xi&apos;an, students develop a global perspective that&apos;s increasingly valuable in today&apos;s interconnected world. Graduates often find themselves uniquely positioned for international careers, whether in multinational corporations, diplomatic services, or as entrepreneurs bridging Eastern and Western markets.
+                                </Text>
                             </VStack>
                         </AccordionPanel>
                     </AccordionItem>
@@ -76,6 +65,12 @@ export default function Guides() {
                         </h2>
                         <AccordionPanel pb={4}>
                             <VStack align="start" gap={4}>
+                                <Text fontWeight="semibold" fontSize={{ base: "sm", md: "md" }}>Three Core Stages</Text>
+                                <UnorderedList pl={4} spacing={2} fontSize={{ base: "sm", md: "md" }}>
+                                    <ListItem><strong>School Selection</strong> – Background evaluation, recommendations, timeline planning.</ListItem>
+                                    <ListItem><strong>Application</strong> – Document preparation, submission, interview coaching.</ListItem>
+                                    <ListItem><strong>Admission</strong> – Offer evaluation, decision confirmation, arrival & accommodation guide.</ListItem>
+                                </UnorderedList>
                                 <Text fontSize={{ base: "sm", md: "md" }}>
                                     <strong>Start early – 6 – 8 months out.</strong> Draw up a shortlist of universities whose
                                     majors, tuition fees, teaching language, and city vibe all fit your goals. Remember that

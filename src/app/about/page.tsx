@@ -1,13 +1,6 @@
 'use client'
 
-import { Box, Container, Heading, Text, SimpleGrid, Image, VStack, UnorderedList, ListItem } from '@chakra-ui/react'
-
-interface TeamMember {
-    name: string;
-    role: string;
-    bio: string;
-    image: string;
-}
+import { Box, Container, Heading, Text, SimpleGrid, VStack, UnorderedList, ListItem } from '@chakra-ui/react'
 
 export default function About() {
     return (
@@ -114,38 +107,6 @@ export default function About() {
                     </SimpleGrid>
                 </VStack>
 
-                {/* Team Section */}
-                <VStack spacing={{ base: 8, md: 12 }}>
-                    <VStack spacing={6}>
-                        <Heading size={{ base: "xl", md: "2xl" }} textAlign="center">Our Team</Heading>
-                        <Text fontSize={{ base: "md", md: "xl" }} color="gray.600" textAlign="center" maxW="container.md">
-                            Meet the experts who will guide you through your journey to studying in China.
-                        </Text>
-                    </VStack>
-
-                    <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={{ base: 6, md: 10 }}>
-                        <TeamMemberCard
-                            name="Dr. Wei Zhang"
-                            role="Founder & Education Director"
-                            bio="Former university professor with 15+ years of experience in international education."
-                            image="/team1.jpg"
-                        />
-                        <TeamMemberCard
-                            name="Li Wei"
-                            role="Scholarship Specialist"
-                            bio="Expert in Chinese government scholarships and university funding opportunities."
-                            image="/team2.jpg"
-                        />
-                        <TeamMemberCard
-                            name="Sarah Chen"
-                            role="Student Support Coordinator"
-                            bio="Dedicated to ensuring smooth transitions for international students in China."
-                            image="/team3.jpg"
-                        />
-                    </SimpleGrid>
-                </VStack>
-
-
                 {/* Contact Information */}
                 <Box mt={{ base: 12, md: 20 }} py={{ base: 12, md: 16 }} borderRadius="xl" bg="blue.50">
                     <Container maxW="container.lg" mx="auto">
@@ -190,32 +151,7 @@ function FeatureCard({ title, description }: { title: string; description: strin
     )
 }
 
-function TeamMemberCard({ name, role, bio, image }: TeamMember) {
-    return (
-        <VStack
-            p={{ base: 4, md: 6 }}
-            bg="white"
-            borderRadius="lg"
-            boxShadow="md"
-            align="center"
-            spacing={4}
-        >
-            <Image
-                src={image}
-                alt={name}
-                w={{ base: "80px", md: "100px" }}
-                h={{ base: "80px", md: "100px" }}
-                borderRadius="full"
-                objectFit="cover"
-            />
-            <VStack spacing={2} align="center">
-                <Heading size={{ base: "sm", md: "md" }} color="#544695">{name}</Heading>
-                <Text color="gray.500" fontWeight="medium" fontSize={{ base: "sm", md: "md" }}>{role}</Text>
-                <Text color="gray.600" textAlign="center" fontSize={{ base: "sm", md: "md" }}>{bio}</Text>
-            </VStack>
-        </VStack>
-    )
-}
+
 
 function StatCard({ number, label }: { number: string; label: string }) {
     return (

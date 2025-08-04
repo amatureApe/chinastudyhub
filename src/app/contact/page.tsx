@@ -29,21 +29,67 @@ export default function Contact() {
                         {/* Social Media */}
                         <Box w="full">
                             <Heading size={{ base: "md", md: "lg" }} mb={4}>Social Media</Heading>
-                            <HStack spacing={4} justify={{ base: "center", lg: "start" }}>
-                                <ChakraLink as={NextLink} href="https://www.youtube.com/@EARLHOPPER-K3Z2Y" isExternal>
-                                    <Icon as={FaYoutube} w={{ base: 5, md: 6 }} h={{ base: 5, md: 6 }} />
+                            <HStack spacing={6} justify={{ base: "center", lg: "start" }} align="center">
+                                <ChakraLink as={NextLink} href="https://www.youtube.com/@EARLHOPPER-K3Z2Y" isExternal display="flex" alignItems="center">
+                                    <Icon
+                                        as={FaYoutube}
+                                        w={{ base: 6, md: 7 }}
+                                        h={{ base: 6, md: 7 }}
+                                        color="gray.600"
+                                        _hover={{ color: "#FF0000", transform: "scale(1.1)" }}
+                                        transition="all 0.2s"
+                                    />
                                 </ChakraLink>
-                                <ChakraLink as={NextLink} href="https://www.facebook.com/profile.php?id=61576295951035" isExternal>
-                                    <Icon as={FaFacebook} w={{ base: 5, md: 6 }} h={{ base: 5, md: 6 }} />
+                                <ChakraLink as={NextLink} href="https://www.facebook.com/profile.php?id=61576295951035" isExternal display="flex" alignItems="center">
+                                    <Icon
+                                        as={FaFacebook}
+                                        w={{ base: 6, md: 7 }}
+                                        h={{ base: 6, md: 7 }}
+                                        color="gray.600"
+                                        _hover={{ color: "#1877F2", transform: "scale(1.1)" }}
+                                        transition="all 0.2s"
+                                    />
                                 </ChakraLink>
-                                <ChakraLink as={NextLink} href="https://www.instagram.com/chinastudyhub_cathy0126" isExternal>
-                                    <Icon as={FaInstagram} w={{ base: 5, md: 6 }} h={{ base: 5, md: 6 }} />
+                                <ChakraLink as={NextLink} href="https://www.instagram.com/chinastudyhub_cathy0126" isExternal display="flex" alignItems="center">
+                                    <Icon
+                                        as={FaInstagram}
+                                        w={{ base: 6, md: 7 }}
+                                        h={{ base: 6, md: 7 }}
+                                        color="gray.600"
+                                        _hover={{ color: "#E4405F", transform: "scale(1.1)" }}
+                                        transition="all 0.2s"
+                                    />
                                 </ChakraLink>
-                                <ChakraLink as={NextLink} href="https://www.tiktok.com/@chinastudyhub_cathy0126" isExternal>
-                                    <Icon as={FaTiktok} w={{ base: 5, md: 6 }} h={{ base: 5, md: 6 }} />
+                                <ChakraLink as={NextLink} href="https://www.tiktok.com/@chinastudyhub_cathy0126" isExternal display="flex" alignItems="center">
+                                    <Icon
+                                        as={FaTiktok}
+                                        w={{ base: 6, md: 7 }}
+                                        h={{ base: 6, md: 7 }}
+                                        color="gray.600"
+                                        _hover={{ color: "#000000", transform: "scale(1.1)" }}
+                                        transition="all 0.2s"
+                                    />
                                 </ChakraLink>
-                                <Icon as={FaWeixin} w={{ base: 5, md: 6 }} h={{ base: 5, md: 6 }} title="WeChat: chinastudyhub_coordinator" />
-                                <Icon as={FaWhatsapp} w={{ base: 5, md: 6 }} h={{ base: 5, md: 6 }} title="WhatsApp coming soon" />
+                                <Box cursor="pointer" title="WeChat: chinastudyhub_coordinator" display="flex" alignItems="center">
+                                    <Icon
+                                        as={FaWeixin}
+                                        w={{ base: 7, md: 8 }}
+                                        h={{ base: 7, md: 8 }}
+                                        color="gray.600"
+                                        _hover={{ color: "#07C160", transform: "scale(1.1)" }}
+                                        transition="all 0.2s"
+                                    />
+                                </Box>
+                                <Box cursor="pointer" title="WhatsApp coming soon" display="flex" alignItems="center">
+                                    <Icon
+                                        as={FaWhatsapp}
+                                        w={{ base: 7, md: 8 }}
+                                        h={{ base: 7, md: 8 }}
+                                        color="gray.600"
+                                        _hover={{ color: "#25D366", transform: "scale(1.1)" }}
+                                        transition="all 0.2s"
+                                    />
+                                </Box>
                             </HStack>
                         </Box>
                     </VStack>

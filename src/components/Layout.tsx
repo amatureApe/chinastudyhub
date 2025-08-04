@@ -26,20 +26,44 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="bold">ChinaStudyHub</Text>
                         </Link>
 
-                        {/* Desktop Navigation */}
-                        <Flex gap={6} display={{ base: 'none', md: 'flex' }}>
-                            {navItems.map((item) => (
-                                <Link
-                                    key={item.href}
-                                    as={NextLink}
-                                    href={item.href}
-                                    _hover={{ color: "#FDB801" }}
-                                    fontSize={{ base: "sm", lg: "md" }}
-                                >
-                                    {item.label}
-                                </Link>
-                            ))}
-                        </Flex>
+                        {/* Desktop Navigation with Button */}
+                        <VStack display={{ base: 'none', md: 'flex' }} align="center">
+                            <Flex gap={6}>
+                                {navItems.map((item) => (
+                                    <Link
+                                        key={item.href}
+                                        as={NextLink}
+                                        href={item.href}
+                                        _hover={{ color: "#FDB801" }}
+                                        fontSize={{ base: "sm", lg: "md" }}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ))}
+                            </Flex>
+
+                            {/* Get Started Button - Desktop */}
+                            <Link
+                                as={NextLink}
+                                href="/contact"
+                                bg="#FDB801"
+                                color="white"
+                                px={6}
+                                py="1px"
+                                borderRadius="full"
+                                fontSize="xs"
+                                fontWeight="medium"
+                                _hover={{ bg: "#78C3BE", textDecoration: "none" }}
+                                transition="all 0.2s"
+                                lineHeight="1"
+                                minH="20px"
+                                display="flex"
+                                alignItems="center"
+                                mt="-16px"
+                            >
+                                Get Started Today
+                            </Link>
+                        </VStack>
 
                         {/* Mobile Menu Button */}
                         <IconButton
@@ -96,6 +120,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Box as="footer" bg="#544695" color="white" py={6}>
                 <Container maxW="container.xl">
                     <VStack gap={4}>
+                        <VStack spacing={2} textAlign="center">
+                            <Text fontSize={{ base: "sm", md: "md" }} color="gray.300">
+                                <strong>Address:</strong> 1st Floor, Building 2, No. 89 Shuangqing Road, Haidian District, Beijing, China
+                            </Text>
+                            <Text fontSize={{ base: "sm", md: "md" }} color="gray.300">
+                                <strong>Email:</strong> glxer001@126.com
+                            </Text>
+                        </VStack>
                         <Text fontSize={{ base: "sm", md: "md" }} textAlign="center">
                             © 2024 ChinaStudyHub. All rights reserved.
                         </Text>
