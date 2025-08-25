@@ -45,7 +45,7 @@ export default function ClassicalChinesePoetry() {
                         </Heading>
                         <VStack spacing={4} align="start">
                             <Text fontSize={{ base: "sm", md: "md" }} lineHeight="1.6">
-                                The Classical Chinese Poetry program at Peking University offers students a comprehensive exploration of China's poetic traditions from the earliest recorded verses to the modern era. This program combines rigorous academic study with cultural immersion, providing students with deep insights into Chinese literature, philosophy, and aesthetics.
+                                The Classical Chinese Poetry program at Peking University offers students a comprehensive exploration of China&apos;s poetic traditions from the earliest recorded verses to the modern era. This program combines rigorous academic study with cultural immersion, providing students with deep insights into Chinese literature, philosophy, and aesthetics.
                             </Text>
                             <Text fontSize={{ base: "sm", md: "md" }} lineHeight="1.6">
                                 Students will study the works of legendary poets such as Li Bai, Du Fu, Wang Wei, and Su Shi, while also exploring the historical and cultural contexts that shaped their writing. The program emphasizes both analytical skills and creative expression, encouraging students to engage with poetry as both scholars and practitioners.

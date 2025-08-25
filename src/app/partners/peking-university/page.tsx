@@ -62,7 +62,7 @@ export default function PekingUniversity() {
                                 <Box as={FaTrophy} w={8} h={8} color="gold" />
                                 <Heading size="md" textAlign="center">Academic Excellence</Heading>
                                 <Text fontSize="sm" textAlign="center" color="gray.600">
-                                    Consistently ranked as China's top university with world-class faculty and research facilities
+                                    Consistently ranked as China&apos;s top university with world-class faculty and research facilities
                                 </Text>
                             </VStack>
                         </CardBody>
