@@ -9,7 +9,11 @@
     },
     {
         "University": "Beihang University",
-        "Majors": "Science and Engineering\nEconomics and Management\nHumanities and Law",
+        "Majors": [
+            "Science and Engineering",
+            "Economics and Management",
+            "Humanities and Law"
+        ],
         "Annual Tuition": "¥25,000",
         "Chinese (HSK≥)": "5（Score of 180+）",
         "English": "—",
@@ -17,7 +21,11 @@
     },
     {
         "University": "Beihang University",
-        "Majors": "Biological and Medical Engineering\nArts\nLow Altitude Technology and Engineering",
+        "Majors": [
+            "Biological and Medical Engineering",
+            "Arts",
+            "Low Altitude Technology and Engineering"
+        ],
         "Annual Tuition": "¥30,000",
         "Chinese (HSK≥)": "",
         "English": "",
@@ -25,7 +33,9 @@
     },
     {
         "University": "Beihang University",
-        "Majors": "Sino-French Aeronautics Institute",
+        "Majors": [
+            "Sino-French Aeronautics Institute"
+        ],
         "Annual Tuition": "¥40,000",
         "Chinese (HSK≥)": "",
         "English": "",
@@ -33,7 +43,14 @@
     },
     {
         "University": "Beihang University",
-        "Majors": "Electronic Information Engineering\nAircraft Design and Engineering\nLow Altitude Technology and Engineering\nComputer Science and Technology\nMechanical Engineering\nInternational Economics and Trade",
+        "Majors": [
+            "Electronic Information Engineering",
+            "Aircraft Design and Engineering",
+            "Low Altitude Technology and Engineering",
+            "Computer Science and Technology",
+            "Mechanical Engineering",
+            "International Economics and Trade"
+        ],
         "Annual Tuition": "¥30,000",
         "Chinese (HSK≥)": "—",
         "English": "IELTS≥6 / TOEFL≥90",
@@ -41,7 +58,9 @@
     },
     {
         "University": "Beijing Normal University",
-        "Majors": "Chinese Language and Culture",
+        "Majors": [
+            "Chinese Language and Culture"
+        ],
         "Annual Tuition": "¥24,000",
         "Chinese (HSK≥)": "4",
         "English": "—",
@@ -49,7 +68,11 @@
     },
     {
         "University": "Beijing Normal University",
-        "Majors": "Humanities Education\nEconomic Management\nSports",
+        "Majors": [
+            "Humanities Education",
+            "Economic Management",
+            "Sports"
+        ],
         "Annual Tuition": "¥24,000",
         "Chinese (HSK≥)": "5（Score of 180+）",
         "English": "",
@@ -57,7 +80,9 @@
     },
     {
         "University": "Beijing Normal University",
-        "Majors": "Science, Engineering, and Arts",
+        "Majors": [
+            "Science, Engineering, and Arts"
+        ],
         "Annual Tuition": "¥27,700",
         "Chinese (HSK≥)": "",
         "English": "",
@@ -65,7 +90,16 @@
     },
     {
         "University": "China Agricultural University",
-        "Majors": "College of Animal Science and Technology\nFood Science and Nutrition\nSchool of Engineering\nSchool of Resources and Environment\nCollege of Agriculture\nCollege of Biology\nCollege of Horticulture\nYantai Research Institute",
+        "Majors": [
+            "College of Animal Science and Technology",
+            "Food Science and Nutrition",
+            "School of Engineering",
+            "School of Resources and Environment",
+            "College of Agriculture",
+            "College of Biology",
+            "College of Horticulture",
+            "Yantai Research Institute"
+        ],
         "Annual Tuition": "¥20,000",
         "Chinese (HSK≥)": "5",
         "English": "—",
@@ -73,7 +107,9 @@
     },
     {
         "University": "China Agricultural University",
-        "Majors": "Veterinary Medicine",
+        "Majors": [
+            "Veterinary Medicine"
+        ],
         "Annual Tuition": "",
         "Chinese (HSK≥)": "5（Score of 250+）",
         "English": "",
@@ -81,7 +117,55 @@
     },
     {
         "University": "University of Science and Technology Beijing",
-        "Majors": "Civil Engineering\nBuilding Environment and Energy Engineering\nSafety Engineering\nMining Engineering\nMineral Processing Engineering\nEngineering Mechanics\nEnergy and Power Engineering\nNew Energy Science and Engineering\nEnvironmental Engineering\nEnvironmental Science\nMetallurgical Engineering\nEnergy Storage Science and Engineering\nMaterials Science and Engineering\nMechanical Engineering\nRobotics Engineering\nVehicle Engineering\nLogistics Engineering\nIndustrial Design\nVisual Communication Design\nAutomation\nMeasurement, Control Technology, and Instruments\nIntelligent Sensing Engineering\nArtificial Intelligence\nComputer Science and Technology\nInformation Security\nInternet of Things Engineering\nCommunication Engineering\nMathematics\nApplied Mathematics\nInformation and Computational Science\nApplied Physics\nStatistics\nApplied Chemistry\nBiotechnology\nBusiness Administration\nAccounting\nInternational Economics and Trade\nFinancial Engineering\nBig Data Management and Applications\nInformation Management and Information Systems\nEngineering Management\nPublic Administration\nSocial Work\nLaw\nEnglish\nJapanese\nGerman",
+        "Majors": [
+            "Civil Engineering",
+            "Building Environment and Energy Engineering",
+            "Safety Engineering",
+            "Mining Engineering",
+            "Mineral Processing Engineering",
+            "Engineering Mechanics",
+            "Energy and Power Engineering",
+            "New Energy Science and Engineering",
+            "Environmental Engineering",
+            "Environmental Science",
+            "Metallurgical Engineering",
+            "Energy Storage Science and Engineering",
+            "Materials Science and Engineering",
+            "Mechanical Engineering",
+            "Robotics Engineering",
+            "Vehicle Engineering",
+            "Logistics Engineering",
+            "Industrial Design",
+            "Visual Communication Design",
+            "Automation",
+            "Measurement, Control Technology, and Instruments",
+            "Intelligent Sensing Engineering",
+            "Artificial Intelligence",
+            "Computer Science and Technology",
+            "Information Security",
+            "Internet of Things Engineering",
+            "Communication Engineering",
+            "Mathematics",
+            "Applied Mathematics",
+            "Information and Computational Science",
+            "Applied Physics",
+            "Statistics",
+            "Applied Chemistry",
+            "Biotechnology",
+            "Business Administration",
+            "Accounting",
+            "International Economics and Trade",
+            "Financial Engineering",
+            "Big Data Management and Applications",
+            "Information Management and Information Systems",
+            "Engineering Management",
+            "Public Administration",
+            "Social Work",
+            "Law",
+            "English",
+            "Japanese",
+            "German"
+        ],
         "Annual Tuition": "¥23,300",
         "Chinese (HSK≥)": "4",
         "English": "—",
@@ -89,7 +173,10 @@
     },
     {
         "University": "University of Science and Technology Beijing",
-        "Majors": "Materials Science and Engineering\nEnvironmental Engineering",
+        "Majors": [
+            "Materials Science and Engineering",
+            "Environmental Engineering"
+        ],
         "Annual Tuition": "",
         "Chinese (HSK≥)": "Need of Chinese Base",
         "English": "IELTS≥5.5 / TOEFL≥70",
@@ -97,7 +184,23 @@
     },
     {
         "University": "Central University of Finance and Economics",
-        "Majors": "Finance\nBusiness Administration\nStatistics\nMathematics\nEconomics and Trade\nPublic Administration\nPolitical Science\nLaw\nForeign Languages and Literature\nEconomics\nSociology\nPsychology\nManagement Science and Engineering\nE-commerce\nComputer Science",
+        "Majors": [
+            "Finance",
+            "Business Administration",
+            "Statistics",
+            "Mathematics",
+            "Economics and Trade",
+            "Public Administration",
+            "Political Science",
+            "Law",
+            "Foreign Languages and Literature",
+            "Economics",
+            "Sociology",
+            "Psychology",
+            "Management Science and Engineering",
+            "E-commerce",
+            "Computer Science"
+        ],
         "Annual Tuition": "¥25,000",
         "Chinese (HSK≥)": "5（Score of 180+）",
         "English": "—",
@@ -105,7 +208,9 @@
     },
     {
         "University": "Central University of Finance and Economics",
-        "Majors": "Finance",
+        "Majors": [
+            "Finance"
+        ],
         "Annual Tuition": "¥40,000",
         "Chinese (HSK≥)": "—",
         "English": "Proof Required (No Score Indicator)",
@@ -113,7 +218,21 @@
     },
     {
         "University": "Beijing University of Posts and Telecommunications",
-        "Majors": "Communication Engineering\nComputer Science and Technology\nInformation Engineering\nArtificial Intelligence\nIntelligent Medical Engineering\nMechanical Engineering\nRobotics Engineering\nAutomation\nPostal Engineering\nMathematics and Applied Mathematics\nInformation and Computational Science\nApplied Physics\nLaw",
+        "Majors": [
+            "Communication Engineering",
+            "Computer Science and Technology",
+            "Information Engineering",
+            "Artificial Intelligence",
+            "Intelligent Medical Engineering",
+            "Mechanical Engineering",
+            "Robotics Engineering",
+            "Automation",
+            "Postal Engineering",
+            "Mathematics and Applied Mathematics",
+            "Information and Computational Science",
+            "Applied Physics",
+            "Law"
+        ],
         "Annual Tuition": "¥24,600",
         "Chinese (HSK≥)": "5",
         "English": "—",
@@ -121,7 +240,9 @@
     },
     {
         "University": "Beijing University of Posts and Telecommunications",
-        "Majors": "Chinese Language",
+        "Majors": [
+            "Chinese Language"
+        ],
         "Annual Tuition": "",
         "Chinese (HSK≥)": "4",
         "English": "—",
@@ -129,7 +250,9 @@
     },
     {
         "University": "Beijing University of Posts and Telecommunications",
-        "Majors": "English",
+        "Majors": [
+            "English"
+        ],
         "Annual Tuition": "",
         "Chinese (HSK≥)": "—",
         "English": "TOEFL≥80",
@@ -137,7 +260,54 @@
     },
     {
         "University": "China University of Geosciences",
-        "Majors": "Economics\nLaw\nEnglish\nTranslation\nMathematics and Applied Mathematics\nData Computing and Applications\nGeographic Information Science\nMarine Science\nMarine Resources and Environment\nGeophysics\nGeology Category\nMechanical Design, Manufacturing, and Automation\nMeasurement, Control Technology, and Instruments\nMaterials Category\nGemology and Material Technology\nNew Energy Materials and Devices\nElectrical Engineering and Automation\nElectronic Information Engineering\nArtificial Intelligence\nComputer Science and Technology\nSoftware Engineering\nData Science and Big Data Technology\nCivil Engineering\nUrban Underground Space Engineering\nIntelligent Construction\nHydrology and Water Resources Engineering\nSurveying and Mapping Engineering\nRemote Sensing Science and Technology\nGeoscience Category\nGeological Engineering\nExploration Technology and Engineering\nGroundwater Science and Engineering\nIntelligent Earth Exploration\nCarbon Storage Science and Engineering\nMarine Engineering and Technology\nLand Reclamation Engineering\nEnvironmental Engineering\nEnvironmental Ecology Engineering\nSafety Engineering\nInformation Management and Systems\nBig Data Management and Applications\nBusiness Administration Category\nLand Resource Management\nNatural Resource Registration and Management\nProduct Design\nArt and Technology",
+        "Majors": [
+            "Economics",
+            "Law",
+            "English",
+            "Translation",
+            "Mathematics and Applied Mathematics",
+            "Data Computing and Applications",
+            "Geographic Information Science",
+            "Marine Science",
+            "Marine Resources and Environment",
+            "Geophysics",
+            "Geology Category",
+            "Mechanical Design, Manufacturing, and Automation",
+            "Measurement, Control Technology, and Instruments",
+            "Materials Category",
+            "Gemology and Material Technology",
+            "New Energy Materials and Devices",
+            "Electrical Engineering and Automation",
+            "Electronic Information Engineering",
+            "Artificial Intelligence",
+            "Computer Science and Technology",
+            "Software Engineering",
+            "Data Science and Big Data Technology",
+            "Civil Engineering",
+            "Urban Underground Space Engineering",
+            "Intelligent Construction",
+            "Hydrology and Water Resources Engineering",
+            "Surveying and Mapping Engineering",
+            "Remote Sensing Science and Technology",
+            "Geoscience Category",
+            "Geological Engineering",
+            "Exploration Technology and Engineering",
+            "Groundwater Science and Engineering",
+            "Intelligent Earth Exploration",
+            "Carbon Storage Science and Engineering",
+            "Marine Engineering and Technology",
+            "Land Reclamation Engineering",
+            "Environmental Engineering",
+            "Environmental Ecology Engineering",
+            "Safety Engineering",
+            "Information Management and Systems",
+            "Big Data Management and Applications",
+            "Business Administration Category",
+            "Land Resource Management",
+            "Natural Resource Registration and Management",
+            "Product Design",
+            "Art and Technology"
+        ],
         "Annual Tuition": "￥26,000~￥39,000",
         "Chinese (HSK≥)": "4",
         "English": "—",
@@ -145,7 +315,9 @@
     },
     {
         "University": "China University of Mining and Technology",
-        "Majors": "Liberal Arts",
+        "Majors": [
+            "Liberal Arts"
+        ],
         "Annual Tuition": "¥13800",
         "Chinese (HSK≥)": "4",
         "English": "—",
@@ -153,7 +325,9 @@
     },
     {
         "University": "China University of Mining and Technology",
-        "Majors": "Science and Engineering",
+        "Majors": [
+            "Science and Engineering"
+        ],
         "Annual Tuition": "¥14600",
         "Chinese (HSK≥)": "",
         "English": "",
@@ -161,7 +335,11 @@
     },
     {
         "University": "China University of Mining and Technology",
-        "Majors": "Mining Engineering\nSafety Engineering\nMechanical Engineering",
+        "Majors": [
+            "Mining Engineering",
+            "Safety Engineering",
+            "Mechanical Engineering"
+        ],
         "Annual Tuition": "Divided by Arts and Sciences",
         "Chinese (HSK≥)": "—",
         "English": "IELTS≥5.5 / TOEFL≥79",
@@ -169,7 +347,43 @@
     },
     {
         "University": "Beijing Forestry University",
-        "Majors": "Network Engineering\nLandscape Horticulture\nOrnamental Horticulture\nUrban and Rural Planning\nLandscape Architecture\nMechanical Design, Manufacturing, and Automation\nElectrical Engineering and Automation\nVehicle Engineering\nAutomation\nWood Science and Engineering\nGeographic Information Science (GIS)\nForestry\nForest Protection\nEnvironmental Engineering\nEnvironmental Science\nWildlife and Nature Reserve Management\nBiotechnology\nBiological Sciences\nFood Science and Engineering\nAgricultural and Forestry Economic Management\nInternational Economics and Trade\nBusiness Administration\nMarketing\nGrassland Science\nArt Design\nProduct Design\nEnvironmental Design\nVisual Communication Design\nDigital Media Arts\nAnimal Science\nStatistics\nFinance\nAccounting\nHuman Resource Management\nWater Supply and Drainage Science and Engineering",
+        "Majors": [
+            "Network Engineering",
+            "Landscape Horticulture",
+            "Ornamental Horticulture",
+            "Urban and Rural Planning",
+            "Landscape Architecture",
+            "Mechanical Design, Manufacturing, and Automation",
+            "Electrical Engineering and Automation",
+            "Vehicle Engineering",
+            "Automation",
+            "Wood Science and Engineering",
+            "Geographic Information Science (GIS)",
+            "Forestry",
+            "Forest Protection",
+            "Environmental Engineering",
+            "Environmental Science",
+            "Wildlife and Nature Reserve Management",
+            "Biotechnology",
+            "Biological Sciences",
+            "Food Science and Engineering",
+            "Agricultural and Forestry Economic Management",
+            "International Economics and Trade",
+            "Business Administration",
+            "Marketing",
+            "Grassland Science",
+            "Art Design",
+            "Product Design",
+            "Environmental Design",
+            "Visual Communication Design",
+            "Digital Media Arts",
+            "Animal Science",
+            "Statistics",
+            "Finance",
+            "Accounting",
+            "Human Resource Management",
+            "Water Supply and Drainage Science and Engineering"
+        ],
         "Annual Tuition": "¥24,800",
         "Chinese (HSK≥)": "4",
         "English": "—",
@@ -177,10 +391,14 @@
     },
     {
         "University": "Beijing Peili Vocational College",
-        "Majors": "International Economics and Trade\nPreschool Education\nTraditional Chinese Medicine and Health Preservation",
+        "Majors": [
+            "International Economics and Trade",
+            "Preschool Education",
+            "Traditional Chinese Medicine and Health Preservation"
+        ],
         "Annual Tuition": "¥22000",
         "Chinese (HSK≥)": "3",
         "English": "—",
         "Other": "—"
-    },
+    }
 ]

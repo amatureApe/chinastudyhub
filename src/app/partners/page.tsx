@@ -6,11 +6,19 @@ import { FaSearch } from 'react-icons/fa'
 
 interface UniversityData {
     University: string
-    Majors: string
+    Majors: string | string[]
     'Annual Tuition': string
     'Chinese (HSK≥)': string
     English: string
     Other: string
+}
+
+// Helper function to get majors as array
+const getMajorsArray = (majors: string | string[]): string[] => {
+    if (Array.isArray(majors)) {
+        return majors
+    }
+    return majors ? majors.split('\n') : []
 }
 
 export default function Partners() {
@@ -30,7 +38,7 @@ export default function Partners() {
             return {
                 universities: universityData.slice(1),
                 totalMatches: universityData.slice(1).reduce((total, uni) => {
-                    return total + (uni.Majors ? uni.Majors.split('\n').length : 0)
+                    return total + getMajorsArray(uni.Majors).length
                 }, 0)
             }
         }
@@ -41,16 +49,16 @@ export default function Partners() {
 
         universityData.slice(1).forEach((university) => {
             // Filter majors that match the search term
-            const matchingMajors = university.Majors
-                ? university.Majors.split('\n')
-                    .filter(major => major.toLowerCase().includes(searchLower))
-                : []
+            const allMajors = getMajorsArray(university.Majors)
+            const matchingMajors = allMajors.filter(major =>
+                major.toLowerCase().includes(searchLower)
+            )
 
             // Include university only if it has matching majors
             if (matchingMajors.length > 0) {
                 results.push({
                     ...university,
-                    Majors: matchingMajors.join('\n')
+                    Majors: matchingMajors
                 })
                 totalMatches += matchingMajors.length
             }
@@ -128,9 +136,10 @@ export default function Partners() {
                                     <Tr key={index} _hover={{ bg: 'gray.50' }}>
                                         <Td fontWeight="medium" color="#544695">{row.University}</Td>
                                         <Td maxW="400px" fontSize="sm">
-                                            {row.Majors ? row.Majors.split('\n').map((major, idx) => (
-                                                <Text key={idx} mb={1}>{major.trim()}</Text>
-                                            )) : <Text>-</Text>}
+                                            {getMajorsArray(row.Majors).length > 0 ?
+                                                getMajorsArray(row.Majors).map((major, idx) => (
+                                                    <Text key={idx} mb={1}>{major.trim()}</Text>
+                                                )) : <Text>-</Text>}
                                         </Td>
                                         <Td fontWeight="bold">{row['Annual Tuition']}</Td>
                                         <Td>{row['Chinese (HSK≥)']}</Td>
@@ -182,9 +191,10 @@ function UniversityCard({ data }: { data: UniversityData }) {
                     <Box>
                         <Text fontWeight="bold" fontSize="sm" color="gray.600">Majors:</Text>
                         <Text fontSize="xs" color="gray.700">
-                            {data.Majors ? data.Majors.split('\n').map((major, idx) => (
-                                <Text key={idx} mb={1}>• {major.trim()}</Text>
-                            )) : <Text>-</Text>}
+                            {getMajorsArray(data.Majors).length > 0 ?
+                                getMajorsArray(data.Majors).map((major, idx) => (
+                                    <Text key={idx} mb={1}>• {major.trim()}</Text>
+                                )) : <Text>-</Text>}
                         </Text>
                     </Box>
 
