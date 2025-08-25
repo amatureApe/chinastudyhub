@@ -400,5 +400,17 @@
         "Chinese (HSK≥)": "3",
         "English": "—",
         "Other": "—"
+    },
+    {
+        "University": "Peking University",
+        "Majors": [
+            "Classical Chinese Poetry",
+            "Applied Econometrics",
+            "Introduction to Chinese Economy"
+        ],
+        "Annual Tuition": "¥15,000",
+        "Chinese (HSK≥)": "—",
+        "English": "—",
+        "Other": "—"
     }
 ]

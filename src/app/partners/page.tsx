@@ -3,6 +3,7 @@
 import { Box, Container, Heading, Text, VStack, Table, Thead, Tbody, Tr, Th, Td, TableContainer, SimpleGrid, Card, CardBody, Badge, Input, InputGroup, InputLeftElement, Icon } from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { FaSearch } from 'react-icons/fa'
+import Link from 'next/link'
 
 interface UniversityData {
     University: string
@@ -134,12 +135,35 @@ export default function Partners() {
                             <Tbody>
                                 {filteredData.map((row, index) => (
                                     <Tr key={index} _hover={{ bg: 'gray.50' }}>
-                                        <Td fontWeight="medium" color="#544695">{row.University}</Td>
+                                        <Td fontWeight="medium" color="#544695">
+                                            {row.University === "Peking University" ? (
+                                                <Link href="/partners/peking-university" style={{ textDecoration: 'underline' }}>
+                                                    {row.University}
+                                                </Link>
+                                            ) : (
+                                                row.University
+                                            )}
+                                        </Td>
                                         <Td maxW="400px" fontSize="sm">
                                             {getMajorsArray(row.Majors).length > 0 ?
-                                                getMajorsArray(row.Majors).map((major, idx) => (
-                                                    <Text key={idx} mb={1}>{major.trim()}</Text>
-                                                )) : <Text>-</Text>}
+                                                getMajorsArray(row.Majors).map((major, idx) => {
+                                                    if (row.University === "Peking University") {
+                                                        const majorSlug = major.toLowerCase()
+                                                            .replace(/\s+/g, '-')
+                                                            .replace(/[^a-z0-9-]/g, '');
+                                                        return (
+                                                            <Text key={idx} mb={1}>
+                                                                <Link
+                                                                    href={`/partners/peking-university/${majorSlug}`}
+                                                                    style={{ textDecoration: 'underline', color: '#544695' }}
+                                                                >
+                                                                    {major.trim()}
+                                                                </Link>
+                                                            </Text>
+                                                        );
+                                                    }
+                                                    return <Text key={idx} mb={1}>{major.trim()}</Text>;
+                                                }) : <Text>-</Text>}
                                         </Td>
                                         <Td fontWeight="bold">{row['Annual Tuition']}</Td>
                                         <Td>{row['Chinese (HSK≥)']}</Td>
@@ -186,15 +210,38 @@ function UniversityCard({ data }: { data: UniversityData }) {
         <Card>
             <CardBody>
                 <VStack align="start" spacing={3}>
-                    <Heading size="sm" color="#544695">{data.University}</Heading>
+                    <Heading size="sm" color="#544695">
+                        {data.University === "Peking University" ? (
+                            <Link href="/partners/peking-university" style={{ textDecoration: 'underline' }}>
+                                {data.University}
+                            </Link>
+                        ) : (
+                            data.University
+                        )}
+                    </Heading>
 
                     <Box>
                         <Text fontWeight="bold" fontSize="sm" color="gray.600">Majors:</Text>
                         <Text fontSize="xs" color="gray.700">
                             {getMajorsArray(data.Majors).length > 0 ?
-                                getMajorsArray(data.Majors).map((major, idx) => (
-                                    <Text key={idx} mb={1}>• {major.trim()}</Text>
-                                )) : <Text>-</Text>}
+                                getMajorsArray(data.Majors).map((major, idx) => {
+                                    if (data.University === "Peking University") {
+                                        const majorSlug = major.toLowerCase()
+                                            .replace(/\s+/g, '-')
+                                            .replace(/[^a-z0-9-]/g, '');
+                                        return (
+                                            <Text key={idx} mb={1}>
+                                                • <Link
+                                                    href={`/partners/peking-university/${majorSlug}`}
+                                                    style={{ textDecoration: 'underline', color: '#544695' }}
+                                                >
+                                                    {major.trim()}
+                                                </Link>
+                                            </Text>
+                                        );
+                                    }
+                                    return <Text key={idx} mb={1}>• {major.trim()}</Text>;
+                                }) : <Text>-</Text>}
                         </Text>
                     </Box>
 
