@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { Box, Container, Heading, Text, VStack, Card, CardBody, Breadcrumb, BreadcrumbItem, BreadcrumbLink, UnorderedList, ListItem, SimpleGrid, Badge, Stat, StatLabel, StatNumber, StatHelpText } from '@chakra-ui/react'
 import Link from 'next/link'
 import { FaChevronRight, FaChartLine, FaClock, FaUsers, FaGraduationCap, FaCalculator, FaDatabase } from 'react-icons/fa'
@@ -206,7 +207,7 @@ export default function AppliedEconometrics() {
                         <VStack spacing={2}>
                             <Box as={FaClock} w={6} h={6} />
                             <Heading size="sm">Duration</Heading>
-                            <Text fontSize="sm" opacity={0.9}>4 Years (Bachelor's)</Text>
+                            <Text fontSize="sm" opacity={0.9}>4 Years (Bachelor&apos;s)</Text>
                         </VStack>
                         <VStack spacing={2}>
                             <Box as={FaGraduationCap} w={6} h={6} />

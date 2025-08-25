@@ -222,7 +222,7 @@ function UniversityCard({ data }: { data: UniversityData }) {
 
                     <Box>
                         <Text fontWeight="bold" fontSize="sm" color="gray.600">Majors:</Text>
-                        <Text fontSize="xs" color="gray.700">
+                        <Box fontSize="xs" color="gray.700">
                             {getMajorsArray(data.Majors).length > 0 ?
                                 getMajorsArray(data.Majors).map((major, idx) => {
                                     if (data.University === "Peking University") {
@@ -242,7 +242,7 @@ function UniversityCard({ data }: { data: UniversityData }) {
                                     }
                                     return <Text key={idx} mb={1}>• {major.trim()}</Text>;
                                 }) : <Text>-</Text>}
-                        </Text>
+                        </Box>
                     </Box>
 
                     <Box>

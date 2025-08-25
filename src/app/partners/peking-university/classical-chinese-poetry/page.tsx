@@ -1,6 +1,7 @@
 'use client'
 
-import { Box, Container, Heading, Text, VStack, Card, CardBody, Breadcrumb, BreadcrumbItem, BreadcrumbLink, UnorderedList, ListItem, SimpleGrid, Badge, Divider } from '@chakra-ui/react'
+import React from 'react'
+import { Box, Container, Heading, Text, VStack, Card, CardBody, Breadcrumb, BreadcrumbItem, BreadcrumbLink, UnorderedList, ListItem, SimpleGrid, Badge } from '@chakra-ui/react'
 import Link from 'next/link'
 import { FaChevronRight, FaBook, FaClock, FaUsers, FaGraduationCap } from 'react-icons/fa'
 
@@ -175,7 +176,7 @@ export default function ClassicalChinesePoetry() {
                         <VStack spacing={2}>
                             <Box as={FaClock} w={6} h={6} />
                             <Heading size="sm">Duration</Heading>
-                            <Text fontSize="sm" opacity={0.9}>4 Years (Bachelor's)</Text>
+                            <Text fontSize="sm" opacity={0.9}>4 Years (Bachelor&apos;s)</Text>
                         </VStack>
                         <VStack spacing={2}>
                             <Box as={FaBook} w={6} h={6} />

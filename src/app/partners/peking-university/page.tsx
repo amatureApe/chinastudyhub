@@ -1,6 +1,7 @@
 'use client'
 
-import { Box, Container, Heading, Text, VStack, SimpleGrid, Card, CardBody, Badge, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Divider, UnorderedList, ListItem, Button, Flex } from '@chakra-ui/react'
+import React from 'react'
+import { Box, Container, Heading, Text, VStack, SimpleGrid, Card, CardBody, Badge, Breadcrumb, BreadcrumbItem, BreadcrumbLink, UnorderedList, ListItem, Button, Flex } from '@chakra-ui/react'
 import Link from 'next/link'
 import { FaGraduationCap, FaTrophy, FaGlobe, FaChevronRight } from 'react-icons/fa'
 
@@ -43,7 +44,7 @@ export default function PekingUniversity() {
                             Peking University (北京大学)
                         </Heading>
                         <Text fontSize={{ base: "lg", md: "xl" }} color="gray.600" maxW="3xl">
-                            China's first modern national university, established in 1898, and one of the most prestigious institutions in Asia
+                            China&apos;s first modern national university, established in 1898, and one of the most prestigious institutions in Asia
                         </Text>
                         <Flex justify="center" mt={4} gap={4} wrap="wrap">
                             <Badge colorScheme="purple" fontSize="sm" px={3} py={1}>Rank #1 in China</Badge>
@@ -110,7 +111,7 @@ export default function PekingUniversity() {
                             <UnorderedList spacing={2} fontSize={{ base: "sm", md: "md" }}>
                                 <ListItem>First modern national university in China (1898)</ListItem>
                                 <ListItem>Consistently ranked #1 university in China</ListItem>
-                                <ListItem>Located in Beijing's Haidian District</ListItem>
+                                <ListItem>Located in Beijing&apos;s Haidian District</ListItem>
                                 <ListItem>Over 50,000 students from around the world</ListItem>
                                 <ListItem>30+ schools and departments</ListItem>
                                 <ListItem>Extensive library system with over 15 million volumes</ListItem>

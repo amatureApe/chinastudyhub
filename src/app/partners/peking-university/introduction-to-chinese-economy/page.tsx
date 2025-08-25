@@ -1,6 +1,7 @@
 'use client'
 
-import { Box, Container, Heading, Text, VStack, Card, CardBody, Breadcrumb, BreadcrumbItem, BreadcrumbLink, UnorderedList, ListItem, SimpleGrid, Badge, Progress, Flex } from '@chakra-ui/react'
+import React from 'react'
+import { Box, Container, Heading, Text, VStack, Card, CardBody, Breadcrumb, BreadcrumbItem, BreadcrumbLink, SimpleGrid, Badge, Progress, Flex } from '@chakra-ui/react'
 import Link from 'next/link'
 import { FaChevronRight, FaIndustry, FaClock, FaUsers, FaGraduationCap, FaGlobe, FaChartBar, FaBuilding } from 'react-icons/fa'
 
@@ -28,7 +29,7 @@ export default function IntroductionToChineseEconomy() {
                             Introduction to Chinese Economy
                         </Heading>
                         <Text fontSize={{ base: "lg", md: "xl" }} color="gray.600" maxW="3xl">
-                            Comprehensive study of China's economic transformation and its role in the global economy
+                            Comprehensive study of China&apos;s economic transformation and its role in the global economy
                         </Text>
                         <Badge colorScheme="green" fontSize="md" px={4} py={2} mt={4}>
                             Economics & Policy Studies
@@ -44,10 +45,10 @@ export default function IntroductionToChineseEconomy() {
                         </Heading>
                         <VStack spacing={4} align="start">
                             <Text fontSize={{ base: "sm", md: "md" }} lineHeight="1.6">
-                                This comprehensive program provides students with a deep understanding of China's remarkable economic transformation from a planned economy to the world's second-largest economy. Students will explore the historical context, policy frameworks, and institutional changes that have driven China's growth.
+                                This comprehensive program provides students with a deep understanding of China&apos;s remarkable economic transformation from a planned economy to the world&apos;s second-largest economy. Students will explore the historical context, policy frameworks, and institutional changes that have driven China&apos;s growth.
                             </Text>
                             <Text fontSize={{ base: "sm", md: "md" }} lineHeight="1.6">
-                                The course covers key topics including economic reforms, industrial development, financial markets, trade policies, and China's integration into the global economy. Special attention is given to contemporary challenges such as sustainable development, income inequality, and technological innovation.
+                                The course covers key topics including economic reforms, industrial development, financial markets, trade policies, and China&apos;s integration into the global economy. Special attention is given to contemporary challenges such as sustainable development, income inequality, and technological innovation.
                             </Text>
                         </VStack>
                     </Box>
@@ -75,7 +76,7 @@ export default function IntroductionToChineseEconomy() {
                                         <Box as={FaGlobe} w={6} h={6} color="green.500" />
                                         <Heading size="sm">Global Integration</Heading>
                                         <Text fontSize="sm" color="gray.600">
-                                            China's role in international trade and investment
+                                            China&apos;s role in international trade and investment
                                         </Text>
                                     </VStack>
                                 </CardBody>
@@ -99,7 +100,7 @@ export default function IntroductionToChineseEconomy() {
                 {/* Economic Indicators */}
                 <Box bg="gray.50" p={{ base: 6, md: 8 }} borderRadius="xl" mb={{ base: 12, md: 16 }}>
                     <Heading size={{ base: "lg", md: "xl" }} mb={6} textAlign="center">
-                        China's Economic Milestones (Study Topics)
+                        China&apos;s Economic Milestones (Study Topics)
                     </Heading>
 
                     <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={{ base: 4, md: 6 }}>
@@ -122,7 +123,7 @@ export default function IntroductionToChineseEconomy() {
                         <Card textAlign="center">
                             <CardBody>
                                 <Heading size="lg" color="#544695" mb={2}>2010</Heading>
-                                <Text fontSize="sm" fontWeight="bold" mb={1}>World's 2nd Economy</Text>
+                                <Text fontSize="sm" fontWeight="bold" mb={1}>World&apos;s 2nd Economy</Text>
                                 <Text fontSize="xs" color="gray.600">Surpassed Japan in GDP</Text>
                             </CardBody>
                         </Card>
@@ -232,7 +233,7 @@ export default function IntroductionToChineseEconomy() {
                             </CardBody>
                         </Card>
                     </SimpleGrid>
-                </Box>
+                </VStack>
 
                 {/* Program Details */}
                 <Box bg="#544695" color="white" p={{ base: 6, md: 8 }} borderRadius="xl" mt={{ base: 12, md: 16 }}>
