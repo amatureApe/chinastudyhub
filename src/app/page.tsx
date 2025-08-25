@@ -12,7 +12,7 @@ import {
   Flex,
   Image
 } from '@chakra-ui/react'
-import { FaGraduationCap, FaUniversity, FaLanguage, FaHandshake } from 'react-icons/fa'
+import { FaGraduationCap, FaUniversity, FaLanguage, FaHandshake, FaUser } from 'react-icons/fa'
 import Link from 'next/link'
 
 interface Testimonial {
@@ -133,6 +133,85 @@ export default function Home() {
         </Container>
       </Box>
 
+      {/* Free Assessment Section */}
+      <Box py={{ base: 8, md: 12 }} bg="gray.50">
+        <Container maxW="container.xl">
+          <VStack spacing={{ base: 8, md: 10 }}>
+            <Box textAlign="center" maxW="3xl">
+              <Heading as="h2" size={{ base: "lg", md: "xl" }} mb={4} color="#544695">
+                Free Assessment
+              </Heading>
+              <Text fontSize={{ base: "md", md: "lg" }} color="gray.700" mb={6}>
+                Take the first step towards your Chinese education journey with our comprehensive free assessment.
+                Our expert team will evaluate your profile and provide personalized recommendations to help you
+                find the perfect university and program that aligns with your academic goals and career aspirations.
+              </Text>
+            </Box>
+
+            <Box w="full" maxW="4xl">
+              <VStack spacing={4}>
+                <Box
+                  w="full"
+                  p={6}
+                  bg="white"
+                  borderRadius="lg"
+                  shadow="sm"
+                  borderLeft="4px solid #544695"
+                >
+                  <Flex align="center" mb={2}>
+                    <Box as={FaUser} color="#544695" mr={3} />
+                    <Heading as="h3" size="md" color="#544695">
+                      Personal Assessment
+                    </Heading>
+                  </Flex>
+                  <Text color="gray.600" fontSize="sm">
+                    We&apos;ll review your academic transcripts, test scores, work experience, and personal interests to create a detailed profile. Our assessment includes evaluating your strengths, identifying areas for improvement, and understanding your long-term career objectives to ensure the best possible match with Chinese universities and programs.
+                  </Text>
+                </Box>
+
+                <Box
+                  w="full"
+                  p={6}
+                  bg="white"
+                  borderRadius="lg"
+                  shadow="sm"
+                  borderLeft="4px solid #544695"
+                >
+                  <Flex align="center" mb={2}>
+                    <Box as={FaUniversity} color="#544695" mr={3} />
+                    <Heading as="h3" size="md" color="#544695">
+                      University Recommendations
+                    </Heading>
+                  </Flex>
+                  <Text color="gray.600" fontSize="sm">
+                    Based on your assessment results, we&apos;ll provide you with a curated list of Chinese universities and specific programs that align with your academic background, career goals, and personal preferences. This includes information about admission requirements, program details, campus life, scholarship opportunities, and application deadlines to help you make informed decisions.
+                  </Text>
+                </Box>
+
+                <Box
+                  w="full"
+                  p={6}
+                  bg="white"
+                  borderRadius="lg"
+                  shadow="sm"
+                  borderLeft="4px solid #544695"
+                >
+                  <Flex align="center" mb={2}>
+                    <Box as={FaHandshake} color="#544695" mr={3} />
+                    <Heading as="h3" size="md" color="#544695">
+                      Professional Guidance
+                    </Heading>
+                  </Flex>
+                  <Text color="gray.600" fontSize="sm">
+                    Our team of experienced education consultants will guide you through every step of the application process. From preparing your documents and writing compelling personal statements to navigating visa requirements and preparing for interviews, we&apos;ll provide ongoing support and answer all your questions to ensure a smooth transition to studying in China.
+                  </Text>
+                </Box>
+              </VStack>
+            </Box>
+          </VStack>
+        </Container>
+      </Box>
+
       {/* Testimonials Section */}
       <Box py={{ base: 12, md: 20 }} bg="white">
         <Container maxW="container.xl">
@@ -161,28 +240,7 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* CTA Section */}
-      <Box py={{ base: 12, md: 20 }} bg="#544695" color="white">
-        <Container maxW="container.xl">
-          <VStack spacing={{ base: 6, md: 8 }} textAlign="center">
-            <Heading as="h2" size={{ base: "lg", md: "xl" }}>
-              Ready to Start Your Journey?
-            </Heading>
-            <Text fontSize={{ base: "md", md: "lg" }} maxW="2xl">
-              Join hundreds of successful students who have achieved their dreams of studying in China with our support.
-            </Text>
-            <Button
-              as={Link}
-              href="/contact"
-              size={{ base: "md", md: "lg" }}
-              bg="#FDB801"
-              _hover={{ bg: "#78C3BE" }}
-            >
-              Get Started Today
-            </Button>
-          </VStack>
-        </Container>
-      </Box>
+
     </Box>
   )
 }

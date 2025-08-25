@@ -1,8 +1,8 @@
 'use client'
 
-import { Box, Container, Heading, Text, SimpleGrid, VStack, Icon, Flex, Badge, Divider } from '@chakra-ui/react'
-import { FaGraduationCap, FaMoneyBillWave, FaUniversity, FaAward } from 'react-icons/fa'
-import React from 'react'
+import { Box, Container, Heading, Text, SimpleGrid, VStack, Icon, Flex, Badge, Divider, Button, HStack } from '@chakra-ui/react'
+import { FaGraduationCap, FaMoneyBillWave, FaUniversity, FaAward, FaChartLine, FaClock, FaBriefcase, FaStar, FaChevronLeft, FaChevronRight, FaHandshake } from 'react-icons/fa'
+import React, { useState, useEffect } from 'react'
 import { UnorderedList, ListItem } from '@chakra-ui/react'
 
 interface ServiceTier {
@@ -17,14 +17,14 @@ interface ServiceTier {
 
 const serviceTiers: ServiceTier[] = [
     {
-        title: 'Free University Consultation',
-        price: '$0',
-        description: 'Basic guidance for partner university applications (processing not included).',
+        title: 'Planning Consultation',
+        price: '$150',
+        description: 'Comprehensive planning session to map out your ideal academic path in China.',
         features: [
-            'University selection advice',
-            'Program matching recommendations',
-            'Application timeline planning',
-            'Document checklist overview'
+            '1 selected university recommendation',
+            '2 alternate university options',
+            '1 intended major recommendation',
+            '3 alternate major suggestions'
         ],
         icon: FaGraduationCap,
         color: 'blue.500',
@@ -90,7 +90,7 @@ export default function Services() {
 
                 {/* Platform Introduction */}
                 <VStack spacing={6} mb={{ base: 16, md: 20 }} align='start' bg='gray.50' p={{ base: 6, md: 8 }} borderRadius='xl'>
-                    <Heading size={{ base: 'lg', md: 'xl' }}>ChinaStudyHub Platform</Heading>
+                    <Heading size={{ base: 'lg', md: 'xl' }}>Our Platform</Heading>
                     <Text fontSize={{ base: 'sm', md: 'md' }}>
                         Founded in 2016, ChinaStudyHub is an online platform dedicated to assisting international students applying to Chinese universities. We specialize in building a global network of educational resources. Our primary services include:
                     </Text>
@@ -131,38 +131,8 @@ export default function Services() {
                 </Box>
 
 
-                {/* How We Help & Why Choose Us */}
-                <VStack spacing={6} mb={{ base: 16, md: 20 }} mt={{ base: 16, md: 20 }} align='start' bg='gray.50' p={{ base: 6, md: 8 }} borderWidth='2px' borderColor='#544695' borderRadius='xl'>
-                    <Heading size={{ base: 'lg', md: 'xl' }}>How ChinaStudyHub Can Help You</Heading>
-
-                    <Text fontWeight='bold' fontSize={{ base: 'sm', md: 'md' }}>Increase Your Admission Chances:</Text>
-                    <UnorderedList pl={6} spacing={2} fontSize={{ base: 'sm', md: 'md' }}>
-                        <ListItem>Comprehensive document preparation – Professional guidance on preparing and reviewing application documents, as well as tailored advice for selecting the right universities and majors.</ListItem>
-                        <ListItem>Expert support – Our specialists provide personalized, in-depth assistance to ensure your application is competitive and well-prepared.</ListItem>
-                        <ListItem>Smart university matching system – Covers top universities and double-first-class institutions.</ListItem>
-                        <ListItem>Professional polishing of application materials – Dual reviews of CVs and recommendation letters for maximum impact.</ListItem>
-                        <ListItem>Intensive entrance exam training – Preparation for HSK, mathematics, physics, and chemistry exams.</ListItem>
-                    </UnorderedList>
-
-                    <Text fontWeight='bold' mt={4} fontSize={{ base: 'sm', md: 'md' }}>Save Time &amp; Energy:</Text>
-                    <UnorderedList pl={6} spacing={2} fontSize={{ base: 'sm', md: 'md' }}>
-                        <ListItem>Streamlined process – We simplify the complex application process, allowing you to focus on the most important aspects of your journey.</ListItem>
-                        <ListItem>Seamless communication – Through online platforms, email, and phone consultations, we ensure smooth communication between students and our expert team.</ListItem>
-                    </UnorderedList>
-
-                    <Text fontWeight='bold' mt={4} fontSize={{ base: 'sm', md: 'md' }}>Career &amp; Employment Support:</Text>
-                    <UnorderedList pl={6} spacing={2} fontSize={{ base: 'sm', md: 'md' }}>
-                        <ListItem>China employment policy guidance – Clear interpretation of employment pathways in China.</ListItem>
-                        <ListItem>Exclusive internship referrals – Internal channels for top company internship opportunities.</ListItem>
-                        <ListItem>Work visa conversion support – Guidance on transitioning from student to work visas.</ListItem>
-                    </UnorderedList>
-
-                    <Text fontWeight='bold' mt={4} fontSize={{ base: 'sm', md: 'md' }}>Our Service Standards:</Text>
-                    <UnorderedList pl={6} spacing={2} fontSize={{ base: 'sm', md: 'md' }}>
-                        <ListItem>Original &quot;5A service standard&quot; – Assessment, Application, Arrival, Studies, and Employment.</ListItem>
-                        <ListItem>Multi-language service team – Support available in English, Chinese, Japanese, Korean, and Spanish.</ListItem>
-                    </UnorderedList>
-                </VStack>
+                {/* How We Help - Carousel Section */}
+                <HelpCarousel />
 
             </Container>
         </Box>
@@ -219,5 +189,231 @@ function ServiceTierCard({ tier, isFullWidth = false }: { tier: ServiceTier; isF
             </VStack>
         </Box>
     )
+}
+
+const helpSections = [
+    {
+        icon: FaGraduationCap,
+        title: "Comprehensive Document Preparation",
+        description: "Professional guidance on preparing and reviewing application documents, as well as tailored advice for selecting the right universities and majors.",
+        color: "blue.500"
+    },
+    {
+        icon: FaUniversity,
+        title: "Expert Support",
+        description: "Our specialists provide personalized, in-depth assistance to ensure your application is competitive and well-prepared.",
+        color: "purple.500"
+    },
+    {
+        icon: FaChartLine,
+        title: "Smart University Matching System",
+        description: "Covers top universities and double-first-class institutions",
+        color: "green.500"
+    },
+    {
+        icon: FaAward,
+        title: "Professional Polishing of Application Materials",
+        description: "Reviews of both CVs and recommendation letters for maximum impact.",
+        color: "orange.500"
+    },
+    {
+        icon: FaMoneyBillWave,
+        title: "Intensive Entrance Exam Training",
+        description: "Preparation for HSK, mathematics, physics, and chemistry exams",
+        color: "red.500"
+    },
+    {
+        icon: FaClock,
+        title: "Streamlined Process",
+        description: "We simplify complex application procedures, eliminating unnecessary steps and providing clear timelines to keep your journey on track efficiently.",
+        color: "teal.500"
+    },
+    {
+        icon: FaStar,
+        title: "Save Time & Energy",
+        description: "Focus on what truly matters while we handle the administrative burden, allowing you to concentrate on your studies and personal preparation.",
+        color: "pink.500"
+    },
+    {
+        icon: FaBriefcase,
+        title: "Career & Employment Support",
+        description: "Comprehensive guidance from academic planning through to career placement, including internship opportunities and employment pathways in China.",
+        color: "cyan.500"
+    },
+    {
+        icon: FaHandshake,
+        title: "Our Service Standards",
+        description: "Maintaining the highest quality through our proven 5A methodology and multilingual support team committed to your success at every stage.",
+        color: "yellow.500"
+    }
+];
+
+function HelpCarousel() {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [autoRotate, setAutoRotate] = useState(true);
+    const itemsToShow = 4;
+
+    // Create extended array for infinite loop
+    const extendedSections = [...helpSections, ...helpSections, ...helpSections];
+
+    useEffect(() => {
+        if (!autoRotate) return;
+
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => prev + 1);
+        }, 15000); // Auto-rotate every 15 seconds
+
+        return () => clearInterval(interval);
+    }, [autoRotate]);
+
+    const nextSlide = () => {
+        setAutoRotate(false); // Stop auto-rotation
+        setCurrentIndex((prev) => prev + 1);
+    };
+
+    const prevSlide = () => {
+        setAutoRotate(false); // Stop auto-rotation
+        setCurrentIndex((prev) => prev - 1);
+    };
+
+    // Handle infinite loop reset
+    useEffect(() => {
+        if (currentIndex >= helpSections.length) {
+            const timer = setTimeout(() => {
+                setCurrentIndex(0);
+            }, 800); // Wait for transition to complete
+            return () => clearTimeout(timer);
+        }
+    }, [currentIndex]);
+
+    return (
+        <VStack spacing={{ base: 8, md: 12 }} mb={{ base: 16, md: 20 }} mt={{ base: 16, md: 20 }}>
+            <Box textAlign="center">
+                <Heading size={{ base: 'xl', md: '2xl' }} mb={4} color="#544695">
+                    How ChinaStudyHub Can Help You
+                </Heading>
+                <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" maxW="3xl">
+                    Comprehensive support designed to maximize your success in studying in China
+                </Text>
+            </Box>
+
+            <Box position="relative" w="full" maxW="6xl" mx="auto" overflow="hidden">
+                {/* Main Carousel Content */}
+                <Box
+                    p={{ base: 4, md: 6 }}
+                    bg="gray.50"
+                    borderRadius="2xl"
+                    minH={{ base: "400px", md: "350px" }}
+                >
+                    <Box
+                        display="flex"
+                        transition={currentIndex >= helpSections.length ? "none" : "transform 0.8s ease-in-out"}
+                        transform={`translateX(-${currentIndex * (100 / extendedSections.length)}%)`}
+                        w={`${(extendedSections.length / itemsToShow) * 100}%`}
+                    >
+                        {extendedSections.map((section, idx) => (
+                            <Box
+                                key={idx}
+                                flex={`0 0 ${100 / extendedSections.length}%`}
+                                px={{ base: 2, md: 3 }}
+                            >
+                                <Box
+                                    p={{ base: 4, md: 5 }}
+                                    bg="white"
+                                    borderRadius="xl"
+                                    shadow="md"
+                                    borderWidth="2px"
+                                    borderColor={section.color}
+                                    _hover={{
+                                        transform: 'translateY(-4px)',
+                                        shadow: 'lg'
+                                    }}
+                                    transition="all 0.3s"
+                                    h="full"
+                                    minH={{ base: "320px", md: "280px" }}
+                                >
+                                    <VStack spacing={4} align="center" h="full">
+                                        <Icon as={section.icon} w={8} h={8} color={section.color} />
+                                        <Heading
+                                            size={{ base: "sm", md: "md" }}
+                                            color={section.color}
+                                            textAlign="center"
+                                            lineHeight="1.2"
+                                        >
+                                            {section.title}
+                                        </Heading>
+                                        <Text
+                                            fontSize={{ base: "xs", md: "sm" }}
+                                            color="gray.600"
+                                            textAlign="center"
+                                            lineHeight="1.4"
+                                            flex="1"
+                                        >
+                                            {section.description}
+                                        </Text>
+                                    </VStack>
+                                </Box>
+                            </Box>
+                        ))}
+                    </Box>
+                </Box>
+
+                {/* Navigation Arrows */}
+                <Button
+                    position="absolute"
+                    left={{ base: "-10px", md: "-20px" }}
+                    top="50%"
+                    transform="translateY(-50%)"
+                    onClick={prevSlide}
+                    bg="white"
+                    shadow="md"
+                    borderRadius="full"
+                    w={{ base: 10, md: 12 }}
+                    h={{ base: 10, md: 12 }}
+                    minW="auto"
+                    _hover={{ bg: "gray.50", shadow: "lg" }}
+                >
+                    <Icon as={FaChevronLeft} color="gray.600" />
+                </Button>
+
+                <Button
+                    position="absolute"
+                    right={{ base: "-10px", md: "-20px" }}
+                    top="50%"
+                    transform="translateY(-50%)"
+                    onClick={nextSlide}
+                    bg="white"
+                    shadow="md"
+                    borderRadius="full"
+                    w={{ base: 10, md: 12 }}
+                    h={{ base: 10, md: 12 }}
+                    minW="auto"
+                    _hover={{ bg: "gray.50", shadow: "lg" }}
+                >
+                    <Icon as={FaChevronRight} color="gray.600" />
+                </Button>
+            </Box>
+
+            {/* Dot Indicators */}
+            <HStack spacing={2}>
+                {helpSections.map((_, idx) => (
+                    <Box
+                        key={idx}
+                        w={2}
+                        h={2}
+                        borderRadius="full"
+                        bg={idx === (currentIndex % helpSections.length) ? "#544695" : "gray.300"}
+                        cursor="pointer"
+                        onClick={() => {
+                            setAutoRotate(false);
+                            setCurrentIndex(idx);
+                        }}
+                        transition="all 0.3s"
+                        _hover={{ transform: "scale(1.3)" }}
+                    />
+                ))}
+            </HStack>
+        </VStack>
+    );
 }
 
