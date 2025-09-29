@@ -1,6 +1,8 @@
 'use client'
 
-import { Box, Container, Heading, Text, SimpleGrid, VStack, UnorderedList, ListItem } from '@chakra-ui/react'
+import { useState, useEffect } from 'react'
+import { Box, Container, Heading, Text, SimpleGrid, VStack, UnorderedList, ListItem, Icon, Button, HStack, Image } from '@chakra-ui/react'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 export default function About() {
     return (
@@ -69,14 +71,8 @@ export default function About() {
                     </Container>
                 </Box>
 
-                {/* Success Stats */}
-                <Box mt={{ base: 12, md: 20 }} mb={{ base: 12, md: 20 }} bg="blue.50" py={{ base: 12, md: 16 }} borderRadius="xl">
-                    <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 10 }} maxW="container.lg" mx="auto">
-                        <StatCard number="500+" label="Students Placed" />
-                        <StatCard number="95%" label="Scholarship Success Rate" />
-                        <StatCard number="50+" label="Partner Universities" />
-                    </SimpleGrid>
-                </Box>
+                {/* Photo Gallery Section */}
+                <PhotoGallery />
 
                 {/* Why Choose Us Section */}
                 <VStack spacing={{ base: 8, md: 12 }} mb={{ base: 12, md: 20 }}>
@@ -153,11 +149,205 @@ function FeatureCard({ title, description }: { title: string; description: strin
 
 
 
-function StatCard({ number, label }: { number: string; label: string }) {
+
+const galleryPhotos = [
+    {
+        src: "/home-page-photo.jpg",
+        alt: "Students studying together in a modern campus environment",
+        title: "Campus Life"
+    },
+    {
+        src: "/chinastudyhubicon.svg",
+        alt: "ChinaStudyHub team collaboration",
+        title: "Our Team"
+    },
+    {
+        src: "/home-page-photo.jpg",
+        alt: "University lecture hall with engaged students",
+        title: "Academic Excellence"
+    },
+    {
+        src: "/chinastudyhubicon.svg",
+        alt: "Cultural exchange and international students",
+        title: "Global Community"
+    },
+    {
+        src: "/home-page-photo.jpg",
+        alt: "Study abroad preparation and consultation",
+        title: "Student Support"
+    },
+    {
+        src: "/chinastudyhubicon.svg",
+        alt: "Beijing university campus architecture",
+        title: "Beautiful Campus"
+    }
+]
+
+function PhotoGallery() {
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [autoRotate, setAutoRotate] = useState(true)
+    const itemsToShow = 3
+
+    const extendedPhotos = [...galleryPhotos, ...galleryPhotos, ...galleryPhotos]
+
+    useEffect(() => {
+        if (!autoRotate) return
+
+        const interval = setInterval(() => {
+            setCurrentIndex((prev) => prev + 1)
+        }, 4000)
+
+        return () => clearInterval(interval)
+    }, [autoRotate])
+
+    const nextSlide = () => {
+        setAutoRotate(false)
+        setCurrentIndex((prev) => prev + 1)
+    }
+
+    const prevSlide = () => {
+        setAutoRotate(false)
+        setCurrentIndex((prev) => prev - 1)
+    }
+
+    useEffect(() => {
+        if (currentIndex >= galleryPhotos.length) {
+            const timer = setTimeout(() => {
+                setCurrentIndex(0)
+            }, 800)
+            return () => clearTimeout(timer)
+        }
+    }, [currentIndex])
+
     return (
-        <VStack>
-            <Heading size={{ base: "xl", md: "2xl" }} color="blue.600">{number}</Heading>
-            <Text fontSize={{ base: "md", md: "lg" }} color="gray.600">{label}</Text>
+        <VStack spacing={{ base: 8, md: 12 }} mb={{ base: 12, md: 20 }}>
+            <Box textAlign="center">
+                <Heading size={{ base: 'xl', md: '2xl' }} mb={4} color="#544695">
+                    Our Community in Action
+                </Heading>
+                <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" maxW="3xl" mx="auto">
+                    Experience the vibrant campus life and supportive community that awaits you at Chinese universities
+                </Text>
+            </Box>
+
+            <Box position="relative" w="full" maxW="6xl" mx="auto" overflow="hidden">
+                <Box
+                    p={{ base: 4, md: 6 }}
+                    bg="gray.50"
+                    borderRadius="2xl"
+                    minH={{ base: "400px", md: "350px" }}
+                >
+                    <Box
+                        display="flex"
+                        transition={currentIndex >= galleryPhotos.length ? "none" : "transform 0.8s ease-in-out"}
+                        transform={`translateX(-${currentIndex * (100 / extendedPhotos.length)}%)`}
+                        w={`${(extendedPhotos.length / itemsToShow) * 100}%`}
+                    >
+                        {extendedPhotos.map((photo, idx) => (
+                            <Box
+                                key={idx}
+                                flex={`0 0 ${100 / extendedPhotos.length}%`}
+                                px={{ base: 2, md: 3 }}
+                            >
+                                <Box
+                                    p={{ base: 4, md: 5 }}
+                                    bg="white"
+                                    borderRadius="xl"
+                                    shadow="md"
+                                    borderWidth="2px"
+                                    borderColor="gray.200"
+                                    _hover={{
+                                        transform: 'translateY(-4px)',
+                                        shadow: 'lg'
+                                    }}
+                                    transition="all 0.3s"
+                                    h="full"
+                                    minH={{ base: "300px", md: "280px" }}
+                                >
+                                    <VStack spacing={4} align="center" h="full">
+                                        <Box
+                                            w="full"
+                                            h="200px"
+                                            borderRadius="lg"
+                                            overflow="hidden"
+                                            bg="gray.100"
+                                        >
+                                            <Image
+                                                src={photo.src}
+                                                alt={photo.alt}
+                                                w="full"
+                                                h="full"
+                                                objectFit="cover"
+                                            />
+                                        </Box>
+                                        <Heading
+                                            size={{ base: "sm", md: "md" }}
+                                            color="#544695"
+                                            textAlign="center"
+                                            lineHeight="1.2"
+                                        >
+                                            {photo.title}
+                                        </Heading>
+                                    </VStack>
+                                </Box>
+                            </Box>
+                        ))}
+                    </Box>
+                </Box>
+
+                <Button
+                    position="absolute"
+                    left={{ base: "-10px", md: "-20px" }}
+                    top="50%"
+                    transform="translateY(-50%)"
+                    onClick={prevSlide}
+                    bg="white"
+                    shadow="md"
+                    borderRadius="full"
+                    w={{ base: 10, md: 12 }}
+                    h={{ base: 10, md: 12 }}
+                    minW="auto"
+                    _hover={{ bg: "gray.50", shadow: "lg" }}
+                >
+                    <Icon as={FaChevronLeft} color="gray.600" />
+                </Button>
+
+                <Button
+                    position="absolute"
+                    right={{ base: "-10px", md: "-20px" }}
+                    top="50%"
+                    transform="translateY(-50%)"
+                    onClick={nextSlide}
+                    bg="white"
+                    shadow="md"
+                    borderRadius="full"
+                    w={{ base: 10, md: 12 }}
+                    h={{ base: 10, md: 12 }}
+                    minW="auto"
+                    _hover={{ bg: "gray.50", shadow: "lg" }}
+                >
+                    <Icon as={FaChevronRight} color="gray.600" />
+                </Button>
+            </Box>
+
+            <HStack spacing={2} justify="center">
+                {galleryPhotos.map((_, idx) => (
+                    <Box
+                        key={idx}
+                        w={2}
+                        h={2}
+                        borderRadius="full"
+                        bg={idx === (currentIndex % galleryPhotos.length) ? "#544695" : "gray.300"}
+                        cursor="pointer"
+                        onClick={() => {
+                            setAutoRotate(false)
+                            setCurrentIndex(idx)
+                        }}
+                        transition="all 0.3s"
+                        _hover={{ transform: "scale(1.3)" }}
+                    />
+                ))}
+            </HStack>
         </VStack>
     )
-} 
+}

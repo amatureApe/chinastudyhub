@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import {
   Box,
   Container,
@@ -10,9 +11,23 @@ import {
   SimpleGrid,
   Icon,
   Flex,
-  Image
+  Image,
+  HStack
 } from '@chakra-ui/react'
-import { FaGraduationCap, FaUniversity, FaLanguage, FaHandshake, FaUser } from 'react-icons/fa'
+import {
+  FaGraduationCap,
+  FaUniversity,
+  FaHandshake,
+  FaUser,
+  FaAward,
+  FaMoneyBillWave,
+  FaChartLine,
+  FaClock,
+  FaBriefcase,
+  FaStar,
+  FaChevronLeft,
+  FaChevronRight
+} from 'react-icons/fa'
 import Link from 'next/link'
 
 interface Testimonial {
@@ -66,10 +81,10 @@ export default function Home() {
                 Comprehensive support for international students applying to Chinese universities. From application assistance to visa support, we guide you every step of the way.
               </Text>
               <Flex gap={4} direction={{ base: "column", sm: "row" }}>
-                <Button as={Link} href="/services" colorScheme="purple" size={{ base: "md", md: "lg" }} bg="#544695" _hover={{ bg: "#FDB801" }}>
+                <Button as={Link} href="/services" colorScheme="purple" size={{ base: "lg", md: "xl" }} bg="#544695" _hover={{ bg: "#FDB801" }} minW={{ base: "180px", md: "220px" }} h={{ base: "60px", md: "72px" }} fontSize={{ base: "lg", md: "xl" }}>
                   Our Services
                 </Button>
-                <Button as={Link} href="/contact" variant="outline" size={{ base: "md", md: "lg" }} borderColor="#544695" color="#544695" _hover={{ bg: "#544695", color: "white" }}>
+                <Button as={Link} href="/contact" variant="outline" size={{ base: "lg", md: "xl" }} borderColor="#544695" color="#544695" _hover={{ bg: "#544695", color: "white" }} minW={{ base: "180px", md: "220px" }} h={{ base: "60px", md: "72px" }} fontSize={{ base: "lg", md: "xl" }}>
                   Contact Us
                 </Button>
               </Flex>
@@ -95,42 +110,29 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* Features Section */}
-      <Box py={{ base: 12, md: 20 }} bg="gray.50">
+      {/* Achievements Section */}
+      <Box bg="blue.50" py={{ base: 12, md: 16 }} borderRadius="xl">
         <Container maxW="container.xl">
-          <VStack spacing={{ base: 8, md: 12 }}>
-            <Box textAlign="center">
-              <Heading as="h2" size={{ base: "lg", md: "xl" }} mb={4} color="#544695">
-                Why Choose ChinaStudyHub?
-              </Heading>
-              <Text fontSize={{ base: "md", md: "lg" }} color="gray.600">
-                We provide comprehensive support throughout your journey to studying in China
-              </Text>
-            </Box>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={{ base: 6, md: 8 }} w="full">
-              <FeatureCard
-                icon={FaUniversity}
-                title="University Selection"
-                description="Expert guidance in choosing the right university and program for your goals"
-              />
-              <FeatureCard
-                icon={FaGraduationCap}
-                title="Application Support"
-                description="Complete assistance with university applications and documentation"
-              />
-              <FeatureCard
-                icon={FaLanguage}
-                title="Language Preparation"
-                description="Support for Chinese language learning and HSK exam preparation"
-              />
-              <FeatureCard
-                icon={FaHandshake}
-                title="Visa Assistance"
-                description="Step-by-step guidance through the Chinese student visa process"
-              />
-            </SimpleGrid>
-          </VStack>
+          <SimpleGrid columns={{ base: 1, md: 3 }} gap={{ base: 6, md: 10 }} maxW="container.lg" mx="auto">
+            <VStack>
+              <Heading size={{ base: "xl", md: "2xl" }} color="blue.600">500+</Heading>
+              <Text fontSize={{ base: "md", md: "lg" }} color="gray.600">Students Placed</Text>
+            </VStack>
+            <VStack>
+              <Heading size={{ base: "xl", md: "2xl" }} color="blue.600">95%</Heading>
+              <Text fontSize={{ base: "md", md: "lg" }} color="gray.600">Scholarship Success Rate</Text>
+            </VStack>
+            <VStack>
+              <Heading size={{ base: "xl", md: "2xl" }} color="blue.600">50+</Heading>
+              <Text fontSize={{ base: "md", md: "lg" }} color="gray.600">Partner Universities</Text>
+            </VStack>
+          </SimpleGrid>
         </Container>
+      </Box>
+
+      {/* How We Help Section */}
+      <Box py={{ base: 12, md: 20 }}>
+        <HelpCarousel />
       </Box>
 
       {/* Free Assessment Section */}
@@ -245,26 +247,6 @@ export default function Home() {
   )
 }
 
-function FeatureCard({ icon, title, description }: { icon: React.ElementType; title: string; description: string }) {
-  return (
-    <VStack
-      p={{ base: 6, md: 8 }}
-      bg="white"
-      borderRadius="xl"
-      boxShadow="md"
-      align="start"
-      spacing={4}
-      _hover={{ transform: 'translateY(-5px)', transition: 'all 0.3s ease' }}
-    >
-      <Icon as={icon} w={{ base: 8, md: 10 }} h={{ base: 8, md: 10 }} color="#544695" />
-      <Heading as="h3" size={{ base: "sm", md: "md" }} color="#544695">
-        {title}
-      </Heading>
-      <Text color="gray.600" fontSize={{ base: "sm", md: "md" }}>{description}</Text>
-    </VStack>
-  )
-}
-
 interface TestimonialCardProps {
   name: string;
   university: string;
@@ -293,6 +275,233 @@ function TestimonialCard({ name, university, program, quote }: TestimonialCardPr
           <Text color="gray.500" fontSize={{ base: "xs", md: "sm" }} textAlign={{ base: "center", sm: "left" }}>{program}</Text>
         </VStack>
       </VStack>
+    </VStack>
+  )
+}
+
+const helpSections = [
+  {
+    icon: FaGraduationCap,
+    title: "Comprehensive Document Preparation",
+    description:
+      "Professional guidance on preparing and reviewing application documents, as well as tailored advice for selecting the right universities and majors.",
+    color: "blue.500"
+  },
+  {
+    icon: FaUniversity,
+    title: "Expert Support",
+    description:
+      "Our specialists provide personalized, in-depth assistance to ensure your application is competitive and well-prepared.",
+    color: "purple.500"
+  },
+  {
+    icon: FaChartLine,
+    title: "Smart University Matching System",
+    description: "Covers top universities and double-first-class institutions",
+    color: "green.500"
+  },
+  {
+    icon: FaAward,
+    title: "Professional Polishing of Application Materials",
+    description: "Reviews of both CVs and recommendation letters for maximum impact.",
+    color: "orange.500"
+  },
+  {
+    icon: FaMoneyBillWave,
+    title: "Intensive Entrance Exam Training",
+    description: "Preparation for HSK, mathematics, physics, and chemistry exams",
+    color: "red.500"
+  },
+  {
+    icon: FaClock,
+    title: "Streamlined Process",
+    description:
+      "We simplify complex application procedures, eliminating unnecessary steps and providing clear timelines to keep your journey on track efficiently.",
+    color: "teal.500"
+  },
+  {
+    icon: FaStar,
+    title: "Save Time & Energy",
+    description:
+      "Focus on what truly matters while we handle the administrative burden, allowing you to concentrate on your studies and personal preparation.",
+    color: "pink.500"
+  },
+  {
+    icon: FaBriefcase,
+    title: "Career & Employment Support",
+    description:
+      "Comprehensive guidance from academic planning through to career placement, including internship opportunities and employment pathways in China.",
+    color: "cyan.500"
+  },
+  {
+    icon: FaHandshake,
+    title: "Our Service Standards",
+    description:
+      "Maintaining the highest quality through our proven 5A methodology and multilingual support team committed to your success at every stage.",
+    color: "yellow.500"
+  }
+]
+
+function HelpCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [autoRotate, setAutoRotate] = useState(true)
+  const itemsToShow = 4
+
+  const extendedSections = [...helpSections, ...helpSections, ...helpSections]
+
+  useEffect(() => {
+    if (!autoRotate) return
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => prev + 1)
+    }, 15000)
+
+    return () => clearInterval(interval)
+  }, [autoRotate])
+
+  const nextSlide = () => {
+    setAutoRotate(false)
+    setCurrentIndex((prev) => prev + 1)
+  }
+
+  const prevSlide = () => {
+    setAutoRotate(false)
+    setCurrentIndex((prev) => prev - 1)
+  }
+
+  useEffect(() => {
+    if (currentIndex >= helpSections.length) {
+      const timer = setTimeout(() => {
+        setCurrentIndex(0)
+      }, 800)
+      return () => clearTimeout(timer)
+    }
+  }, [currentIndex])
+
+  return (
+    <VStack spacing={{ base: 6, md: 8 }} mb={{ base: 4, md: 6 }} mt={{ base: 1, md: 2 }}>
+      <Box textAlign="center">
+        <Heading size={{ base: 'lg', md: 'xl' }} mb={4} color="#544695">
+          How ChinaStudyHub Can Help You
+        </Heading>
+        <Text fontSize={{ base: 'md', md: 'lg' }} color="gray.600" maxW="3xl" mx="auto">
+          Comprehensive support designed to maximize your success in studying in China
+        </Text>
+      </Box>
+
+      <Box position="relative" w="full" maxW="6xl" mx="auto" overflow="hidden">
+        <Box
+          p={{ base: 4, md: 6 }}
+          bg="gray.50"
+          borderRadius="2xl"
+          minH={{ base: '400px', md: '350px' }}
+        >
+          <Box
+            display="flex"
+            transition={currentIndex >= helpSections.length ? 'none' : 'transform 0.8s ease-in-out'}
+            transform={`translateX(-${currentIndex * (100 / extendedSections.length)}%)`}
+            w={`${(extendedSections.length / itemsToShow) * 100}%`}
+          >
+            {extendedSections.map((section, idx) => (
+              <Box
+                key={idx}
+                flex={`0 0 ${100 / extendedSections.length}%`}
+                px={{ base: 2, md: 3 }}
+              >
+                <Box
+                  p={{ base: 4, md: 5 }}
+                  bg="white"
+                  borderRadius="xl"
+                  shadow="md"
+                  borderWidth="2px"
+                  borderColor={section.color}
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    shadow: 'lg'
+                  }}
+                  transition="all 0.3s"
+                  h="full"
+                  minH={{ base: '320px', md: '280px' }}
+                >
+                  <VStack spacing={4} align="center" h="full">
+                    <Icon as={section.icon} w={8} h={8} color={section.color} />
+                    <Heading
+                      size={{ base: 'sm', md: 'md' }}
+                      color={section.color}
+                      textAlign="center"
+                      lineHeight="1.2"
+                    >
+                      {section.title}
+                    </Heading>
+                    <Text
+                      fontSize={{ base: 'xs', md: 'sm' }}
+                      color="gray.600"
+                      textAlign="center"
+                      lineHeight="1.4"
+                      flex="1"
+                    >
+                      {section.description}
+                    </Text>
+                  </VStack>
+                </Box>
+              </Box>
+            ))}
+          </Box>
+        </Box>
+
+        <Button
+          position="absolute"
+          left={{ base: '-10px', md: '-20px' }}
+          top="50%"
+          transform="translateY(-50%)"
+          onClick={prevSlide}
+          bg="white"
+          shadow="md"
+          borderRadius="full"
+          w={{ base: 10, md: 12 }}
+          h={{ base: 10, md: 12 }}
+          minW="auto"
+          _hover={{ bg: 'gray.50', shadow: 'lg' }}
+        >
+          <Icon as={FaChevronLeft} color="gray.600" />
+        </Button>
+
+        <Button
+          position="absolute"
+          right={{ base: '-10px', md: '-20px' }}
+          top="50%"
+          transform="translateY(-50%)"
+          onClick={nextSlide}
+          bg="white"
+          shadow="md"
+          borderRadius="full"
+          w={{ base: 10, md: 12 }}
+          h={{ base: 10, md: 12 }}
+          minW="auto"
+          _hover={{ bg: 'gray.50', shadow: 'lg' }}
+        >
+          <Icon as={FaChevronRight} color="gray.600" />
+        </Button>
+      </Box>
+
+      <HStack spacing={2} justify="center">
+        {helpSections.map((_, idx) => (
+          <Box
+            key={idx}
+            w={2}
+            h={2}
+            borderRadius="full"
+            bg={idx === (currentIndex % helpSections.length) ? '#544695' : 'gray.300'}
+            cursor="pointer"
+            onClick={() => {
+              setAutoRotate(false)
+              setCurrentIndex(idx)
+            }}
+            transition="all 0.3s"
+            _hover={{ transform: 'scale(1.3)' }}
+          />
+        ))}
+      </HStack>
     </VStack>
   )
 }

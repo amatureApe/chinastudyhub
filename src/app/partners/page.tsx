@@ -111,6 +111,12 @@ export default function Partners() {
                                 Found {totalMatches} program{totalMatches !== 1 ? 's' : ''} across {filteredData.length} universit{filteredData.length !== 1 ? 'ies' : 'y'}
                             </Text>
                         )}
+                        <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600" mt={searchTerm ? 1 : 2} textAlign="center">
+                            For more detailed information{' '}
+                            <Link href="/contact" style={{ color: '#544695', textDecoration: 'underline', fontWeight: 'bold' }}>
+                                CONTACT US
+                            </Link>
+                        </Text>
                     </Box>
                 </VStack>
 
