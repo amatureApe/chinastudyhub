@@ -186,7 +186,23 @@ const galleryPhotos = [
 function PhotoGallery() {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [autoRotate, setAutoRotate] = useState(true)
-    const itemsToShow = 3
+    const [itemsToShow, setItemsToShow] = useState(1)
+
+    useEffect(() => {
+        const updateItemsToShow = () => {
+            if (window.innerWidth >= 1024) { // lg breakpoint
+                setItemsToShow(3)
+            } else if (window.innerWidth >= 768) { // md breakpoint
+                setItemsToShow(2)
+            } else { // base (mobile)
+                setItemsToShow(1)
+            }
+        }
+
+        updateItemsToShow()
+        window.addEventListener('resize', updateItemsToShow)
+        return () => window.removeEventListener('resize', updateItemsToShow)
+    }, [])
 
     const extendedPhotos = [...galleryPhotos, ...galleryPhotos, ...galleryPhotos]
 

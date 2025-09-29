@@ -345,7 +345,23 @@ const helpSections = [
 function HelpCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [autoRotate, setAutoRotate] = useState(true)
-  const itemsToShow = 4
+  const [itemsToShow, setItemsToShow] = useState(1)
+
+  useEffect(() => {
+    const updateItemsToShow = () => {
+      if (window.innerWidth >= 1024) { // lg breakpoint
+        setItemsToShow(4)
+      } else if (window.innerWidth >= 768) { // md breakpoint
+        setItemsToShow(3)
+      } else { // base (mobile)
+        setItemsToShow(1)
+      }
+    }
+
+    updateItemsToShow()
+    window.addEventListener('resize', updateItemsToShow)
+    return () => window.removeEventListener('resize', updateItemsToShow)
+  }, [])
 
   const extendedSections = [...helpSections, ...helpSections, ...helpSections]
 
@@ -394,7 +410,7 @@ function HelpCarousel() {
           p={{ base: 4, md: 6 }}
           bg="gray.50"
           borderRadius="2xl"
-          minH={{ base: '400px', md: '350px' }}
+          minH={{ base: '280px', md: '240px' }}
         >
           <Box
             display="flex"
@@ -421,7 +437,7 @@ function HelpCarousel() {
                   }}
                   transition="all 0.3s"
                   h="full"
-                  minH={{ base: '320px', md: '280px' }}
+                  minH={{ base: '220px', md: '200px' }}
                 >
                   <VStack spacing={4} align="center" h="full">
                     <Icon as={section.icon} w={8} h={8} color={section.color} />
