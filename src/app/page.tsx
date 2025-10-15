@@ -66,48 +66,110 @@ const testimonials: Testimonial[] = [
   }
 ]
 
+// Carousel images for the hero section
+const carouselImages = [
+  {
+    src: "/home-page-banner/Tsinhua Univ1.jpg",
+    alt: "Tsinghua University Campus",
+    title: "Tsinghua University"
+  },
+  {
+    src: "/home-page-banner/beihang 1.jpg",
+    alt: "Beihang University Campus",
+    title: "Beihang University"
+  },
+  {
+    src: "/home-page-banner/Film Academy 1.jpg",
+    alt: "Beijing Film Academy Campus",
+    title: "Beijing Film Academy"
+  },
+  {
+    src: "/home-page-banner/BLCU3.jpg",
+    alt: "Beijing Language and Culture University Campus",
+    title: "Beijing Language and Culture University"
+  },
+  {
+    src: "/home-page-banner/Peking 6.jpeg",
+    alt: "Peking University Campus",
+    title: "Peking University"
+  }
+]
+
 export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  // Auto-play carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % carouselImages.length)
+    }, 10000) // 10 seconds per image
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <Box>
-      {/* Hero Section */}
-      <Box bg="white" py={{ base: 12, md: 20 }}>
-        <Container maxW="container.xl">
-          <Flex direction={{ base: 'column', md: 'row' }} align="center" gap={8}>
-            <Box flex={1}>
-              <Heading as="h1" size={{ base: "xl", md: "2xl" }} mb={6} color="#544695">
-                Your Gateway to Chinese Education
-              </Heading>
-              <Text fontSize={{ base: "lg", md: "xl" }} mb={8} color="gray.600">
-                Comprehensive support for international students applying to Chinese universities. From application assistance to visa support, we guide you every step of the way.
-              </Text>
-              <Flex gap={4} direction={{ base: "column", sm: "row" }}>
-                <Button as={Link} href="/services" colorScheme="purple" size={{ base: "lg", md: "xl" }} bg="#544695" _hover={{ bg: "#FDB801" }} minW={{ base: "180px", md: "220px" }} h={{ base: "60px", md: "72px" }} fontSize={{ base: "lg", md: "xl" }}>
-                  Our Services
-                </Button>
-                <Button as={Link} href="/contact" variant="outline" size={{ base: "lg", md: "xl" }} borderColor="#544695" color="#544695" _hover={{ bg: "#544695", color: "white" }} minW={{ base: "180px", md: "220px" }} h={{ base: "60px", md: "72px" }} fontSize={{ base: "lg", md: "xl" }}>
-                  Contact Us
-                </Button>
-              </Flex>
-            </Box>
-            <Box flex={1} display={{ base: 'none', md: 'block' }}>
-              <Box
+      {/* Hero Section with Carousel */}
+      <Box position="relative" minH={{ base: "60vh", md: "70vh" }} overflow="hidden">
+        {/* Carousel Images */}
+        <Box position="absolute" top={0} left={0} w="full" h="full" zIndex={1}>
+          {carouselImages.map((image, index) => (
+            <Box
+              key={index}
+              position="absolute"
+              top={0}
+              left={0}
+              w="full"
+              h="full"
+              opacity={index === currentImageIndex ? 1 : 0}
+              transition="opacity 0.8s ease-in-out"
+              bg="gray.200"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
                 w="full"
-                h="400px"
-                borderRadius="xl"
-                overflow="hidden"
-                boxShadow="lg"
-              >
-                <Image
-                  src="/home-page-photo.jpg"
-                  alt="Students studying in China"
-                  w="full"
-                  h="full"
-                  objectFit="cover"
-                />
-              </Box>
+                h="full"
+                objectFit="cover"
+                objectPosition="center"
+              />
             </Box>
-          </Flex>
-        </Container>
+          ))}
+        </Box>
+
+        {/* Hero Content Overlay */}
+        <Box position="relative" zIndex={2} minH={{ base: "60vh", md: "70vh" }} display="flex" alignItems="center" justifyContent="center">
+          <Container maxW="container.xl" h="full">
+            <Flex direction={{ base: 'column', md: 'row' }} align="center" justify="center" gap={8} h="full">
+              <Box 
+                zIndex={3}
+                bg="rgba(0,0,0,0.6)"
+                p={{ base: 6, md: 8 }}
+                borderRadius="xl"
+                backdropFilter="blur(3px)"
+                maxW={{ base: "90%", md: "800px" }}
+                w="full"
+                textAlign="center"
+              >
+                <Heading as="h1" size={{ base: "xl", md: "2xl" }} mb={6} color="white" textShadow="0 2px 4px rgba(0,0,0,0.5)">
+                  Your Gateway to Chinese Education
+                </Heading>
+                <Text fontSize={{ base: "lg", md: "xl" }} mb={8} color="white" textShadow="0 1px 3px rgba(0,0,0,0.5)">
+                  Comprehensive support for international students applying to Chinese universities. From application assistance to visa support, we guide you every step of the way.
+                </Text>
+                <Flex gap={4} direction={{ base: "column", sm: "row" }} justify="center">
+                  <Button as={Link} href="/services" colorScheme="purple" size={{ base: "lg", md: "xl" }} bg="#544695" _hover={{ bg: "#FDB801" }} minW={{ base: "180px", md: "220px" }} h={{ base: "60px", md: "72px" }} fontSize={{ base: "lg", md: "xl" }}>
+                    Our Services
+                  </Button>
+                  <Button as={Link} href="/contact" variant="outline" size={{ base: "lg", md: "xl" }} borderColor="white" color="white" _hover={{ bg: "white", color: "#544695" }} minW={{ base: "180px", md: "220px" }} h={{ base: "60px", md: "72px" }} fontSize={{ base: "lg", md: "xl" }}>
+                    Contact Us
+                  </Button>
+                </Flex>
+              </Box>
+
+            </Flex>
+          </Container>
+        </Box>
       </Box>
 
       {/* Achievements Section */}
