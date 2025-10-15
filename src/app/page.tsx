@@ -155,7 +155,8 @@ export default function Home() {
                   Your Gateway to Chinese Education
                 </Heading>
                 <Text fontSize={{ base: "lg", md: "xl" }} mb={8} color="white" textShadow="0 1px 3px rgba(0,0,0,0.5)">
-                  Comprehensive support for international students applying to Chinese universities. From application assistance to visa support, we guide you every step of the way.
+                  Comprehensive support for international students applying to Chinese universities.
+                  <Box as="span" display={{ base: "none", md: "inline" }}> From application assistance to visa support, we guide you every step of the way.</Box>
                 </Text>
                 <Flex gap={4} direction={{ base: "column", sm: "row" }} justify="center">
                   <Button as={Link} href="/services" colorScheme="purple" size={{ base: "lg", md: "xl" }} bg="#544695" _hover={{ bg: "#FDB801" }} minW={{ base: "180px", md: "220px" }} h={{ base: "60px", md: "72px" }} fontSize={{ base: "lg", md: "xl" }}>
