@@ -33,31 +33,42 @@ export default function Partners() {
             .catch(error => console.error('Error loading university data:', error))
     }, [])
 
-    // Filter and process universities based on search term
+    // Group universities and filter based on search term
     const getFilteredData = () => {
+        const rawData = universityData.slice(1)
+        
+        // Group by university name
+        const grouped = new Map<string, UniversityData[]>()
+        
         if (!searchTerm) {
-            return {
-                universities: universityData.slice(1),
-                totalMatches: universityData.slice(1).reduce((total, uni) => {
-                    return total + getMajorsArray(uni.Majors).length
-                }, 0)
-            }
+            rawData.forEach((uni) => {
+                if (!grouped.has(uni.University)) {
+                    grouped.set(uni.University, [])
+                }
+                grouped.get(uni.University)!.push(uni)
+            })
+            
+            const totalMatches = rawData.reduce((total, uni) => {
+                return total + getMajorsArray(uni.Majors).length
+            }, 0)
+            
+            return { grouped, totalMatches }
         }
 
         const searchLower = searchTerm.toLowerCase()
-        const results: UniversityData[] = []
         let totalMatches = 0
 
-        universityData.slice(1).forEach((university) => {
-            // Filter majors that match the search term
+        rawData.forEach((university) => {
             const allMajors = getMajorsArray(university.Majors)
             const matchingMajors = allMajors.filter(major =>
                 major.toLowerCase().includes(searchLower)
             )
 
-            // Include university only if it has matching majors
             if (matchingMajors.length > 0) {
-                results.push({
+                if (!grouped.has(university.University)) {
+                    grouped.set(university.University, [])
+                }
+                grouped.get(university.University)!.push({
                     ...university,
                     Majors: matchingMajors
                 })
@@ -65,13 +76,10 @@ export default function Partners() {
             }
         })
 
-        return {
-            universities: results,
-            totalMatches
-        }
+        return { grouped, totalMatches }
     }
 
-    const { universities: filteredData, totalMatches } = getFilteredData()
+    const { grouped: groupedData, totalMatches } = getFilteredData()
 
     return (
         <Box py={{ base: 12, md: 20 }}>
@@ -108,7 +116,7 @@ export default function Partners() {
                         </InputGroup>
                         {searchTerm && (
                             <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600" mt={2} textAlign="center">
-                                Found {totalMatches} program{totalMatches !== 1 ? 's' : ''} across {filteredData.length} universit{filteredData.length !== 1 ? 'ies' : 'y'}
+                                Found {totalMatches} program{totalMatches !== 1 ? 's' : ''} across {groupedData.size} universit{groupedData.size !== 1 ? 'ies' : 'y'}
                             </Text>
                         )}
                         <Text fontSize={{ base: "xs", md: "sm" }} color="gray.600" mt={searchTerm ? 1 : 2} textAlign="center">
@@ -130,52 +138,49 @@ export default function Partners() {
                         <Table variant="simple" size="sm">
                             <Thead bg="gray.50">
                                 <Tr>
-                                    <Th>University</Th>
-                                    <Th>Majors</Th>
-                                    <Th>Annual Tuition</Th>
-                                    <Th>Chinese (HSK≥)</Th>
-                                    <Th>English</Th>
-                                    <Th>Other</Th>
+                                    <Th minW="150px" maxW="200px">University</Th>
+                                    <Th minW="250px" maxW="350px">Majors</Th>
+                                    <Th minW="120px" maxW="150px">Annual Tuition</Th>
+                                    <Th minW="100px" maxW="130px">Chinese (HSK≥)</Th>
+                                    <Th minW="100px" maxW="150px">English</Th>
+                                    <Th minW="80px" maxW="120px">Other</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
-                                {filteredData.map((row, index) => (
-                                    <Tr key={index} _hover={{ bg: 'gray.50' }}>
-                                        <Td fontWeight="medium" color="#544695">
-                                            {row.University === "Peking University" ? (
-                                                <Link href="/partners/peking-university" style={{ textDecoration: 'underline' }}>
-                                                    {row.University}
-                                                </Link>
-                                            ) : (
-                                                row.University
+                                {Array.from(groupedData.entries()).map(([university, rows], uniIndex) => (
+                                    rows.map((row, rowIndex) => (
+                                        <Tr key={`${uniIndex}-${rowIndex}`} _hover={{ bg: 'gray.50' }} borderTop={rowIndex === 0 ? "2px solid" : "none"} borderColor={rowIndex === 0 ? "gray.300" : "transparent"}>
+                                            {rowIndex === 0 && (
+                                                <Td 
+                                                    fontWeight="bold" 
+                                                    color="#544695" 
+                                                    minW="150px" 
+                                                    maxW="200px" 
+                                                    whiteSpace="normal" 
+                                                    wordBreak="break-word"
+                                                    rowSpan={rows.length}
+                                                    verticalAlign="top"
+                                                    bg="gray.50"
+                                                    borderRight="2px solid"
+                                                    borderColor="gray.200"
+                                                    fontSize="md"
+                                                    py={4}
+                                                >
+                                                    {university}
+                                                </Td>
                                             )}
-                                        </Td>
-                                        <Td maxW="400px" fontSize="sm">
-                                            {getMajorsArray(row.Majors).length > 0 ?
-                                                getMajorsArray(row.Majors).map((major, idx) => {
-                                                    if (row.University === "Peking University") {
-                                                        const majorSlug = major.toLowerCase()
-                                                            .replace(/\s+/g, '-')
-                                                            .replace(/[^a-z0-9-]/g, '');
-                                                        return (
-                                                            <Text key={idx} mb={1}>
-                                                                <Link
-                                                                    href={`/partners/peking-university/${majorSlug}`}
-                                                                    style={{ textDecoration: 'underline', color: '#544695' }}
-                                                                >
-                                                                    {major.trim()}
-                                                                </Link>
-                                                            </Text>
-                                                        );
-                                                    }
-                                                    return <Text key={idx} mb={1}>{major.trim()}</Text>;
-                                                }) : <Text>-</Text>}
-                                        </Td>
-                                        <Td fontWeight="bold">{row['Annual Tuition']}</Td>
-                                        <Td>{row['Chinese (HSK≥)']}</Td>
-                                        <Td>{row.English}</Td>
-                                        <Td>{row.Other}</Td>
-                                    </Tr>
+                                            <Td minW="250px" maxW="350px" fontSize="sm" whiteSpace="normal" wordBreak="break-word">
+                                                {getMajorsArray(row.Majors).length > 0 ?
+                                                    getMajorsArray(row.Majors).map((major, idx) => (
+                                                        <Text key={idx} mb={1}>{major.trim()}</Text>
+                                                    )) : <Text>-</Text>}
+                                            </Td>
+                                            <Td fontWeight="bold" minW="120px" maxW="150px" whiteSpace="normal">{row['Annual Tuition']}</Td>
+                                            <Td minW="100px" maxW="130px" whiteSpace="normal">{row['Chinese (HSK≥)']}</Td>
+                                            <Td minW="100px" maxW="150px" whiteSpace="normal" wordBreak="break-word">{row.English}</Td>
+                                            <Td minW="80px" maxW="120px" whiteSpace="normal">{row.Other}</Td>
+                                        </Tr>
+                                    ))
                                 ))}
                             </Tbody>
                         </Table>
@@ -189,8 +194,8 @@ export default function Partners() {
                     </Box>
 
                     <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-                        {filteredData.map((row, index) => (
-                            <UniversityCard key={index} data={row} />
+                        {Array.from(groupedData.entries()).map(([university, rows], index) => (
+                            <UniversityGroupCard key={index} university={university} data={rows} />
                         ))}
                     </SimpleGrid>
                 </Box>
@@ -211,59 +216,42 @@ export default function Partners() {
     )
 }
 
-function UniversityCard({ data }: { data: UniversityData }) {
+function UniversityGroupCard({ university, data }: { university: string; data: UniversityData[] }) {
     return (
         <Card>
             <CardBody>
-                <VStack align="start" spacing={3}>
+                <VStack align="start" spacing={4}>
                     <Heading size="sm" color="#544695">
-                        {data.University === "Peking University" ? (
-                            <Link href="/partners/peking-university" style={{ textDecoration: 'underline' }}>
-                                {data.University}
-                            </Link>
-                        ) : (
-                            data.University
-                        )}
+                        {university}
                     </Heading>
 
-                    <Box>
-                        <Text fontWeight="bold" fontSize="sm" color="gray.600">Majors:</Text>
-                        <Box fontSize="xs" color="gray.700">
-                            {getMajorsArray(data.Majors).length > 0 ?
-                                getMajorsArray(data.Majors).map((major, idx) => {
-                                    if (data.University === "Peking University") {
-                                        const majorSlug = major.toLowerCase()
-                                            .replace(/\s+/g, '-')
-                                            .replace(/[^a-z0-9-]/g, '');
-                                        return (
-                                            <Text key={idx} mb={1}>
-                                                • <Link
-                                                    href={`/partners/peking-university/${majorSlug}`}
-                                                    style={{ textDecoration: 'underline', color: '#544695' }}
-                                                >
-                                                    {major.trim()}
-                                                </Link>
-                                            </Text>
-                                        );
-                                    }
-                                    return <Text key={idx} mb={1}>• {major.trim()}</Text>;
-                                }) : <Text>-</Text>}
+                    {data.map((row, idx) => (
+                        <Box key={idx} w="full" pb={idx < data.length - 1 ? 3 : 0} borderBottom={idx < data.length - 1 ? "1px solid" : "none"} borderColor="gray.200">
+                            <Box mb={2}>
+                                <Text fontWeight="bold" fontSize="sm" color="gray.600">Majors:</Text>
+                                <Box fontSize="xs" color="gray.700">
+                                    {getMajorsArray(row.Majors).length > 0 ?
+                                        getMajorsArray(row.Majors).map((major, majorIdx) => (
+                                            <Text key={majorIdx} mb={1}>• {major.trim()}</Text>
+                                        )) : <Text>-</Text>}
+                                </Box>
+                            </Box>
+
+                            <Box mb={2}>
+                                <Text fontWeight="bold" fontSize="sm" color="gray.600">Annual Tuition:</Text>
+                                <Badge colorScheme="green" fontSize="xs">{row['Annual Tuition']}</Badge>
+                            </Box>
+
+                            <Box>
+                                <Text fontWeight="bold" fontSize="sm" color="gray.600">Language Requirements:</Text>
+                                <VStack align="start" spacing={1}>
+                                    <Text fontSize="xs">Chinese: {row['Chinese (HSK≥)']}</Text>
+                                    <Text fontSize="xs">English: {row.English}</Text>
+                                    <Text fontSize="xs">Other: {row.Other}</Text>
+                                </VStack>
+                            </Box>
                         </Box>
-                    </Box>
-
-                    <Box>
-                        <Text fontWeight="bold" fontSize="sm" color="gray.600">Annual Tuition:</Text>
-                        <Badge colorScheme="green" fontSize="xs">{data['Annual Tuition']}</Badge>
-                    </Box>
-
-                    <Box>
-                        <Text fontWeight="bold" fontSize="sm" color="gray.600">Language Requirements:</Text>
-                        <VStack align="start" spacing={1}>
-                            <Text fontSize="xs">Chinese: {data['Chinese (HSK≥)']}</Text>
-                            <Text fontSize="xs">English: {data.English}</Text>
-                            <Text fontSize="xs">Other: {data.Other}</Text>
-                        </VStack>
-                    </Box>
+                    ))}
                 </VStack>
             </CardBody>
         </Card>
